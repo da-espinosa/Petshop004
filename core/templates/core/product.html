@@ -1,0 +1,76 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block contenido %}
+<!-- NAVBAR INICIO ACTIVE -->
+<nav class="navbar navbar-expand-lg bg-white navbar-light shadow-sm py-3 py-lg-0 px-3 px-lg-0">
+  <a href="{% url 'index'%}" class="navbar-brand ms-lg-5">
+      <h1 class="m-0 text-uppercase text-dark"><i class="bi bi-shop fs-1 text-primary me-3"></i>PetShop</h1>
+  </a>
+  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+      <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarCollapse">
+      <div class="navbar-nav ms-auto py-0">
+          <!--COMO DAR UN ACTIVE A CADA CLASS DESDE DJANGO-->
+          {% if user.is_authenticated %}
+          <a href="#"class= "nav-link">Bienvenido: {{ user.username }}</a>
+          <a href="{% url 'logout' %}"class= "nav-link">Cerrar sesion</a>
+          {% else %}
+          <a href="{% url 'login' %}"class= "nav-link">Ingresar</a>
+          {% endif %}
+          <a href="{% url 'index'%}" class="nav-item nav-link ">Inicio</a>
+          <a href="{% url 'about'%}" class="nav-item nav-link ">Acerca de</a>
+          <a href="{% url 'service'%}" class="nav-item nav-link ">Servicio</a>
+          <a href="{% url 'product'%}" class="nav-item nav-link active">Producto</a>
+          <div class="nav-item dropdown">
+              <!-----------------------NO OCUPAREMOS DROP DOWN-------------------------->
+             <!----<a class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
+              <div class="dropdown-menu m-0">
+                  <a href="{% url 'team' %}" class="dropdown-item">The Team</a>
+                  <a href="{% url 'testimonio' %}" class="dropdown-item">Testimonial</a>
+                  <a href="{% url 'blog' %}" class="dropdown-item">Blog Grid</a>
+                  <a href="{% url 'detalle' %}" class="dropdown-item">Blog Detail</a>
+              </div>-->
+              <!-------------------------------------------------------------------->
+          </div>
+          <a href="{% url 'carrito' %}" class="nav-item nav-link nav-contact bg-primary text-white px-5 ms-lg-5">Carrito <i class="bi bi-cart"></i></a>
+      </div>
+  </div>
+</nav>
+<!-- NAVBAR FIN -->
+
+<div class="container">
+
+    <div class="border-start border-5 border-primary ps-5 mb-5 my-5" style="max-width: 600px;">
+        <h1 class="display-5 text-uppercase mb-0">Productos</h1>
+      </div>
+    <div class="row row-cols-3 g-8">
+        
+        {% for aux in listado %}
+      <div class="col ">
+
+        <div class="card text-center">
+            <img src="{{ aux.imagen.url }} "  class="card-img-top" alt="Fissure in Sandstone"/>
+            <div class="card-body">
+              <h5 class="card-title">{{ aux.nombre }}</h5>
+              <p class="card-text">{{ aux.descripcion }}</p>
+              <p class="card-text">Stock: {{ aux.stock }}</p>
+              <p class="card-text">Precio: ${{ aux.precio }}</p>
+              <div class="btn-action d-flex justify-content-center">
+                {% if user.is_authenticated %}
+                <a href="{% url 'add' %}" class="btn btn-primary">Agregar</a>
+                <a href="{% url 'update' aux.id %}" class="btn btn-primary">Modificar</a>
+                <a href="{% url 'delete' aux.id %}" class="btn btn-primary">Eliminar</a>
+                {% else %}
+                <a href="{% url 'carrito' %}" class="btn btn-primary">Añadir al carrito</a>
+                {% endif %}
+            </div>
+            </div>
+          </div>
+
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+
+{% endblock %}

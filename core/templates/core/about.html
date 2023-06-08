@@ -1,0 +1,92 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block contenido %}
+<!-- NAVBAR INICIO ACTIVE -->
+<nav class="navbar navbar-expand-lg bg-white navbar-light shadow-sm py-3 py-lg-0 px-3 px-lg-0">
+				<a href="{% url 'index'%}" class="navbar-brand ms-lg-5">
+						<h1 class="m-0 text-uppercase text-dark"><i class="bi bi-shop fs-1 text-primary me-3"></i>PetShop</h1>
+				</a>
+				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+						<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbarCollapse">
+						<div class="navbar-nav ms-auto py-0">
+								<!--COMO DAR UN ACTIVE A CADA CLASS DESDE DJANGO-->
+								{% if user.is_authenticated %}
+								<a href="#"class= "nav-link">Bienvenido: {{ user.username }}</a>
+								<a href="{% url 'logout' %}"class= "nav-link">Cerrar sesion</a>
+								{% else %}
+								<a href="{% url 'login' %}"class= "nav-link">Ingresar</a>
+								{% endif %}
+								<a href="{% url 'index'%}" class="nav-item nav-link ">Inicio</a>
+								<a href="{% url 'about'%}" class="nav-item nav-link active ">Acerca de</a>
+								<a href="{% url 'service'%}" class="nav-item nav-link ">Servicio</a>
+								<a href="{% url 'product'%}" class="nav-item nav-link ">Producto</a>
+
+
+								<!--dropdown-->
+								<div class="nav-item dropdown">
+						
+										<!--<a class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
+										<div class="dropdown-menu m-0">
+												<a href="{% url 'price' %}" class="dropdown-item">Pricing Plan</a>
+												<a href="{% url 'team' %}" class="dropdown-item">The Team</a>
+												<a href="{% url 'testimonio' %}" class="dropdown-item">Testimonial</a>
+												<a href="{% url 'blog' %}" class="dropdown-item">Blog Grid</a>
+												<a href="{% url 'detalle' %}" class="dropdown-item">Blog Detail</a>
+										</div>
+										------------------------------------------------------------------>
+								<!--fin dropdown-->
+
+
+								</div>
+								<a href="{% url 'carrito' %}" class="nav-item nav-link nav-contact bg-primary text-white px-5 ms-lg-5">Carrito <i class="bi bi-cart"></i></a>
+						</div>
+				</div>
+		</nav>
+<!-- NAVBAR FIN -->
+
+
+<!-- ABOUT INICIO-->
+<div class="container-fluid py-5">
+	<div class="container">
+			<div class="row gx-5">
+					<div class="col-lg-5 mb-5 mb-lg-0" style="min-height: 500px;">
+							<div class="position-relative h-100">
+									<img class="position-absolute w-100 h-100 rounded" src="{% static 'core/img/about.jpg'%}" style="object-fit: cover;">
+							</div>
+					</div>
+					<div class="col-lg-7">
+							<div class="border-start border-5 border-primary ps-5 mb-5">
+									<h6 class="text-primary text-uppercase">Mas de nosotros</h6>
+									<h1 class="display-5 text-uppercase mb-0">Mantenemos a sus mascotas felices todo el tiempo</h1>
+							</div>
+							<h4 class="text-body mb-4">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Autem, esse.</h4>
+							<div class="bg-light p-4">
+									<ul class="nav nav-pills justify-content-between mb-3" id="pills-tab" role="tablist">
+											<li class="nav-item w-50" role="presentation">
+													<button class="nav-link text-uppercase w-100 active" id="pills-1-tab" data-bs-toggle="pill"
+															data-bs-target="#pills-1" type="button" role="tab" aria-controls="pills-1"
+															aria-selected="true">Nuestra misión</button>
+											</li>
+											<li class="nav-item w-50" role="presentation">
+													<button class="nav-link text-uppercase w-100" id="pills-2-tab" data-bs-toggle="pill"
+															data-bs-target="#pills-2" type="button" role="tab" aria-controls="pills-2"
+															aria-selected="false">Nuestra visión</button>
+											</li>
+									</ul>
+									<div class="tab-content" id="pills-tabContent">
+											<div class="tab-pane fade show active" id="pills-1" role="tabpanel" aria-labelledby="pills-1-tab">
+													<p class="mb-0">Tempor erat elitr at rebum at at clita aliquyam consetetur. Diam dolor diam ipsum et, tempor voluptua sit consetetur sit. Aliquyam diam amet diam et eos sadipscing labore. Clita erat ipsum et lorem et sit, sed stet no labore lorem sit. Sanctus clita duo justo et tempor consetetur takimata eirmod, dolores takimata consetetur invidunt magna dolores aliquyam dolores dolore. Amet erat amet et magna</p>
+											</div>
+											<div class="tab-pane fade" id="pills-2" role="tabpanel" aria-labelledby="pills-2-tab">
+													<p class="mb-0">Tempor erat elitr at rebum at at clita aliquyam consetetur. Diam dolor diam ipsum et, tempor voluptua sit consetetur sit. Aliquyam diam amet diam et eos sadipscing labore. Clita erat ipsum et lorem et sit, sed stet no labore lorem sit. Sanctus clita duo justo et tempor consetetur takimata eirmod, dolores takimata consetetur invidunt magna dolores aliquyam dolores dolore. Amet erat amet et magna</p>
+											</div>
+									</div>
+							</div>
+					</div>
+			</div>
+	</div>
+</div>
+<!-- ABOUT FIN -->
+{% endblock %}

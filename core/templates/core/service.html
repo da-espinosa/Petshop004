@@ -1,0 +1,241 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block contenido %}
+<!-- NAVBAR INICIO ACTIVE -->
+<nav class="navbar navbar-expand-lg bg-white navbar-light shadow-sm py-3 py-lg-0 px-3 px-lg-0">
+  <a href="{% url 'index'%}" class="navbar-brand ms-lg-5">
+      <h1 class="m-0 text-uppercase text-dark"><i class="bi bi-shop fs-1 text-primary me-3"></i>Pet Shop</h1>
+  </a>
+  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+      <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarCollapse">
+      <div class="navbar-nav ms-auto py-0">
+          <!--COMO DAR UN ACTIVE A CADA CLASS DESDE DJANGO-->
+          {% if user.is_authenticated %}
+          <a href="#"class= "nav-link">Bienvenido: {{ user.username }}</a>
+          <a href="{% url 'logout' %}"class= "nav-link">Cerrar sesion</a>
+          {% else %}
+          <a href="{% url 'login' %}"class= "nav-link">Ingresar</a>
+          {% endif %}
+          <a href="{% url 'index'%}" class="nav-item nav-link ">Inicio</a>
+          <a href="{% url 'about'%}" class="nav-item nav-link ">Acerca de</a>
+          <a href="{% url 'service'%}" class="nav-item nav-link active ">Servicio</a>
+          <a href="{% url 'product'%}" class="nav-item nav-link ">Producto</a>
+          <div class="nav-item dropdown">
+              <!-----------------------SOLUCIONAR DROP DOWN-------------------------->
+              <!--MODIFICAR NOMBRES-->
+              <!--<a class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
+              <div class="dropdown-menu m-0">
+                  <a href="{% url 'price' %}" class="dropdown-item">Pricing Plan</a>
+                  <a href="{% url 'team' %}" class="dropdown-item">The Team</a>
+                  <a href="{% url 'testimonio' %}" class="dropdown-item">Testimonial</a>
+                  <a href="{% url 'blog' %}" class="dropdown-item">Blog Grid</a>
+                  <a href="{% url 'detalle' %}" class="dropdown-item">Blog Detail</a>
+              </div>-->
+              <!-------------------------------------------------------------------->
+          </div>
+          <a href="{% url 'carrito' %}" class="nav-item nav-link nav-contact bg-primary text-white px-5 ms-lg-5">Carrito <i class="bi bi-cart"></i></a>
+      </div>
+  </div>
+</nav>
+<!-- NAVBAR FIN -->
+
+<!-- SERVICIOS INICIO -->
+<div class="container-fluid py-5">
+    <div class="container">
+        <div class="border-start border-5 border-primary ps-5 mb-5" style="max-width: 600px;">
+            <h6 class="text-primary text-uppercase">Servicios</h6>
+            <h1 class="display-5 text-uppercase mb-0">Nuestros servicios de cuidado de mascotas</h1>
+        </div>
+        <div class="row g-5">
+            <div class="col-md-6">
+                <div class="service-item bg-light d-flex p-4">
+                    <i class="flaticon-house display-1 text-primary me-4"></i>
+                    <div>
+                        <h5 class="text-uppercase mb-3">Alojamiento de mascotas</h5>
+                        <p>Kasd dolor no lorem sit tempor at justo rebum rebum stet justo elitr dolor amet sit</p>
+                        <a class="text-primary text-uppercase" href="">Leer más<i class="bi bi-chevron-right"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="service-item bg-light d-flex p-4">
+                    <i class="flaticon-food display-1 text-primary me-4"></i>
+                    <div>
+                        <h5 class="text-uppercase mb-3">Alimentación de mascotas</h5>
+                        <p>Kasd dolor no lorem sit tempor at justo rebum rebum stet justo elitr dolor amet sit</p>
+                        <a class="text-primary text-uppercase" href="">Leer más<i class="bi bi-chevron-right"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="service-item bg-light d-flex p-4">
+                    <i class="flaticon-grooming display-1 text-primary me-4"></i>
+                    <div>
+                        <h5 class="text-uppercase mb-3">Aseo de mascotas</h5>
+                        <p>Kasd dolor no lorem sit tempor at justo rebum rebum stet justo elitr dolor amet sit</p>
+                        <a class="text-primary text-uppercase" href="">Leer más<i class="bi bi-chevron-right"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="service-item bg-light d-flex p-4">
+                    <i class="flaticon-cat display-1 text-primary me-4"></i>
+                    <div>
+                        <h5 class="text-uppercase mb-3">Entrenamiento de mascotas</h5>
+                        <p>Kasd dolor no lorem sit tempor at justo rebum rebum stet justo elitr dolor amet sit</p>
+                        <a class="text-primary text-uppercase" href="">Leer más<i class="bi bi-chevron-right"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="service-item bg-light d-flex p-4">
+                    <i class="flaticon-dog display-1 text-primary me-4"></i>
+                    <div>
+                        <h5 class="text-uppercase mb-3">Ejercicio para mascotas</h5>
+                        <p>Kasd dolor no lorem sit tempor at justo rebum rebum stet justo elitr dolor amet sit</p>
+                        <a class="text-primary text-uppercase" href="">Leer más<i class="bi bi-chevron-right"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="service-item bg-light d-flex p-4">
+                    <i class="flaticon-vaccine display-1 text-primary me-4"></i>
+                    <div>
+                        <h5 class="text-uppercase mb-3">Tratamiento de mascotas</h5>
+                        <p>Kasd dolor no lorem sit tempor at justo rebum rebum stet justo elitr dolor amet sit</p>
+                        <a class="text-primary text-uppercase" href="">Leer más<i class="bi bi-chevron-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+<!-- SERVICIOS FIN-->
+
+<!-- SUBS MEMBRESIA INICIO -->
+<div class="container-fluid py-5">
+  <div class="container">
+      <div class="border-start border-5 border-primary ps-5 mb-5" style="max-width: 600px;">
+          <h6 class="text-primary text-uppercase">Miembros del equipo</h6>
+          <h1 class="display-5 text-uppercase mb-0">Profesionales calificados en el cuidado de mascotas</h1>
+      </div>
+      <div class="owl-carousel team-carousel position-relative" style="padding-right: 25px;">
+          <div class="team-item">
+              <div class="position-relative overflow-hidden">
+                  <img class="img-fluid w-100" src="{% static 'core/img/team-1.jpg'%}" alt="">
+                  <div class="team-overlay">
+                      <div class="d-flex align-items-center justify-content-start">
+                          <a class="btn btn-light btn-square mx-1" href="#"><i class="bi bi-twitter"></i></a>
+                          <a class="btn btn-light btn-square mx-1" href="#"><i class="bi bi-facebook"></i></a>
+                          <a class="btn btn-light btn-square mx-1" href="#"><i class="bi bi-linkedin"></i></a>
+                      </div>
+                  </div>
+              </div>
+              <div class="bg-light text-center p-4">
+                  <h5 class="text-uppercase">Renata Puente</h5>
+              </div>
+          </div>
+          <div class="team-item">
+              <div class="position-relative overflow-hidden">
+                  <img class="img-fluid w-100" src="{% static 'core/img/team-2.jpg'%}" alt="">
+                  <div class="team-overlay">
+                      <div class="d-flex align-items-center justify-content-start">
+                          <a class="btn btn-light btn-square mx-1" href="#"><i class="bi bi-twitter"></i></a>
+                          <a class="btn btn-light btn-square mx-1" href="#"><i class="bi bi-facebook"></i></a>
+                          <a class="btn btn-light btn-square mx-1" href="#"><i class="bi bi-linkedin"></i></a>
+                      </div>
+                  </div>
+              </div>
+              <div class="bg-light text-center p-4">
+                  <h5 class="text-uppercase">Cristiana Ronaldo</h5>
+              </div>
+          </div>
+          <div class="team-item">
+              <div class="position-relative overflow-hidden">
+                  <img class="img-fluid w-100" src="{% static 'core/img/team-3.jpg'%}" alt="">
+                  <div class="team-overlay">
+                      <div class="d-flex align-items-center justify-content-start">
+                          <a class="btn btn-light btn-square mx-1" href="#"><i class="bi bi-twitter"></i></a>
+                          <a class="btn btn-light btn-square mx-1" href="#"><i class="bi bi-facebook"></i></a>
+                          <a class="btn btn-light btn-square mx-1" href="#"><i class="bi bi-linkedin"></i></a>
+                      </div>
+                  </div>
+              </div>
+              <div class="bg-light text-center p-4">
+                  <h5 class="text-uppercase">Alexa Sanchez</h5>
+              </div>
+          </div>
+          <div class="team-item">
+              <div class="position-relative overflow-hidden">
+                  <img class="img-fluid w-100" src="{% static 'core/img/team-4.jpg'%}" alt="">
+                  <div class="team-overlay">
+                      <div class="d-flex align-items-center justify-content-start">
+                          <a class="btn btn-light btn-square mx-1" href="#"><i class="bi bi-twitter"></i></a>
+                          <a class="btn btn-light btn-square mx-1" href="#"><i class="bi bi-facebook"></i></a>
+                          <a class="btn btn-light btn-square mx-1" href="#"><i class="bi bi-linkedin"></i></a>
+                      </div>
+                  </div>
+              </div>
+              <div class="bg-light text-center p-4">
+                  <h5 class="text-uppercase">Artura Vidal</h5>
+              </div>
+          </div>
+          <div class="team-item">
+              <div class="position-relative overflow-hidden">
+                  <img class="img-fluid w-100" src="{% static 'core/img/team-5.jpg'%}" alt="">
+                  <div class="team-overlay">
+                      <div class="d-flex align-items-center justify-content-start">
+                          <a class="btn btn-light btn-square mx-1" href="#"><i class="bi bi-twitter"></i></a>
+                          <a class="btn btn-light btn-square mx-1" href="#"><i class="bi bi-facebook"></i></a>
+                          <a class="btn btn-light btn-square mx-1" href="#"><i class="bi bi-linkedin"></i></a>
+                      </div>
+                  </div>
+              </div>
+              <div class="bg-light text-center p-4">
+                  <h5 class="text-uppercase">Claudia Bravo</h5>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+<!-- SUBS MEMBRESIA INICIO -->
+
+<!-- TESTIMONIO INICIO -->
+<div class="container-fluid bg-testimonial py-5" style="margin: 45px 0;">
+  <div class="container py-5">
+      <div class="row justify-content-end">
+          <div class="col-lg-7">
+              <div class="owl-carousel testimonial-carousel bg-white p-5">
+                  <div class="testimonial-item text-center">
+                      <div class="position-relative mb-4">
+                          <img class="img-fluid mx-auto" src="{% static 'core/img/pailita.jpg'%}" alt="">
+                          <div class="position-absolute top-100 start-50 translate-middle d-flex align-items-center justify-content-center bg-white" style="width: 45px; height: 45px;">
+                              <i class="bi bi-chat-square-quote text-primary"></i>
+                          </div>
+                      </div>
+                      <p>Es mi tienda de confianza para las necesidades de mis animales , son muy rápidos enviando los pedidos , en 24-48 horas ya lo tienes en casa</p>
+                      <hr class="w-25 mx-auto">
+                      <h5 class="text-uppercase">Pailita Perez</h5>
+                  </div>
+                  <div class="testimonial-item text-center">
+                      <div class="position-relative mb-4">
+                        <img class="img-fluid mx-auto" src="{% static 'core/img/jairovera.jpg'%}" alt="">
+                          <div class="position-absolute top-100 start-50 translate-middle d-flex align-items-center justify-content-center bg-white" style="width: 45px; height: 45px;">
+                              <i class="bi bi-chat-square-quote text-primary"></i>
+                          </div>
+                      </div>
+                      <p>Es la tercera vez que compro y todo genial. Por mi zona siempre tengo problemas para comprar la marca de pienso que le doy a mis gatos y aquí en menos de 48h la tengo en casa</p>
+                      <hr class="w-25 mx-auto">
+                      <h5 class="text-uppercase">Jairo Vera</h5>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+<!-- TESTIMONIO FIN -->
+
+
+{% endblock %}
