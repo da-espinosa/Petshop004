@@ -14,16 +14,16 @@
                     {{ form | crispy }}
                 </table>
                 <input type="submit" class="btn btn-success" value="Guardar">
+                <a href="{% url 'index' %}"><i class="fas fa-angle-left me-2"></i>Volver</a>
             </form>
     <br><br><br>
-
         </div>
     </div>
 </div>
 
 {% endblock %}
 {% block js %}
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11%22%3E"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 {% if messages %} 
     {% for aux in messages %} 
     <script>
@@ -38,6 +38,5 @@
     })
     </script>
     {% endfor %} 
-
-    {% endif %}
+{% endif %}
 {% endblock %}
