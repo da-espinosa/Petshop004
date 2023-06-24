@@ -105,7 +105,12 @@
                     <form action="">
                         <div class="input-group">
                             <input type="text" class="form-control p-3" placeholder="Your Email">
-                            <a href="{% url 'subscripcion'%}"><i class="fas fa-angle-left me-2"></i>Suscríbete</a>
+                            <a href="{% url 'suscripcion'%}"><i class="fas fa-angle-left me-2"></i>Suscríbete</a>
+                            
+                        </div>
+                        <div class="input-group">
+                            <input type="text" class="form-control p-3" placeholder="Your Email">
+                            <a onclick="deleteSuscripcion('{{ suscripcion.id }}')" class="btn btn-primary">Anular</a>
                             
                         </div>
                     </form>
@@ -141,7 +146,7 @@
         </div>
     </div>
     <!-- FINAL FOOTER -->
-
+    
 
     <!-- VOLVER AL TOP-->
     <a href="#" class="btn btn-primary py-3 fs-4 back-to-top"><i class="bi bi-arrow-up"></i></a>
@@ -156,8 +161,8 @@
    
     <script src="{% static 'core/js/main.js' %}"></script>
 
-    {% block js %}
-
-    {% endblock js %}
+{% block js %}
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+{% endblock js %}
     </body>
 </html>
