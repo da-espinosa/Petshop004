@@ -2,39 +2,34 @@
 {% load static %}
 {% block contenido %}
 
-
-<div class="container">
-
-    <div class="row row-cols-3 g-3">
-        {% for aux in listado %}
-      <div class="col">
-
-        <div class="card">
-            <img src="{{ aux.imagen.url }}" class="card-img-top" alt="Fissure in Sandstone"/>
-            <div class="card-body">
-              <h5 class="card-title">{{ aux.codigo }}</h5>
-              <p class="card-text">{{ aux.producto }}</p>
-              <div class="btn-action d-flex justify-content-center">
-                {% if user.is_authenticated %}
-                <a href="{% url 'addCarrito' %}" class="btn btn-primary">Agregar</a>
-                <a href="{% url 'update' aux.id %}" class="btn btn-primary">Modificar</a>
-                <a href="{% url 'delete' aux.id %}" class="btn btn-primary">Eliminar</a>
-                {% else %}
-                <a href="{% url 'carrito' %}" class="btn btn-primary">Añadir al carrito</a>
-                {% endif %}
-            </div>
-            </div>
-          </div>
-
-      </div>
-      {% endfor %}
-    </div>
-  </div>
-
-
-
-
-{% endblock %}
-{% block js %}
-
+  <title>Tabla de seguimiento de pedidos</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+    <h1>Tabla de seguimiento de pedidos</h1>
+    <table>
+        <tr>
+            <th>Número de pedido</th>
+            <th>Estado</th>
+            <th>Fecha</th>
+        </tr>
+        {% for pedido in pedidos %}
+        <tr>
+            <td>{{ pedido.numero_pedido }}</td>
+            <td>{{ pedido.estado }}</td>
+            <td>{{ pedido.fecha }}</td>
+        </tr>
+        {% endfor %}
+    </table>
 {% endblock %}

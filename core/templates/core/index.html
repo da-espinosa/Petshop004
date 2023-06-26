@@ -2,6 +2,8 @@
 {% load static %}
 {% block contenido %}
 
+<!--<a onclick="deleteProducto({{ aux.id }})" class="heart d-flex justify-content-center align-items-center ">borralo</a>-->
+
 <!-- NAVBAR INICIO ACTIVE -->
 <nav class="navbar navbar-expand-lg bg-white navbar-light shadow-sm py-3 py-lg-0 px-3 px-lg-0">
     <a href="{% url 'index'%}" class="navbar-brand ms-lg-5">
@@ -22,6 +24,7 @@
             <a href="{% url 'about'%}" class="nav-item nav-link ">Acerca de</a>
             <a href="{% url 'service'%}" class="nav-item nav-link ">Servicio</a>
             <a href="{% url 'product'%}" class="nav-item nav-link ">Producto</a>
+            <a href="{% url 'seguimiento'%}" class="nav-item nav-link ">Seguimiento</a>
             <div class="nav-item dropdown">
 
                 <!-----------------------SOLUCIONAR DROP DOWN-------------------------->
@@ -44,6 +47,7 @@
 <!-- VIDEO O CARRUSEL INICIO HERO-HEADER=STYLE -->
 <div class="container-fluid bg-primary py-5 mb-5 hero-header">
     <div class="container py-5">
+        
         <div class="row justify-content-start">
             <div class="col-lg-8 text-center text-lg-start">
                 <h1 class="display-1 text-uppercase text-dark mb-lg-4">PetShop</h1>
@@ -51,205 +55,185 @@
                 <p class="fs-4 text-white mb-lg-4">Al mejor precio</p>
                 <div class="d-flex align-items-center justify-content-center justify-content-lg-start pt-5">
                     <a href="{% url 'product' %}" class="btn btn-outline-light border-2 py-md-3 px-md-5 me-5">Ver mas</a>
-                    <button type="button" class="btn-play" data-bs-toggle="modal"
-                        data-src="https://youtu.be/z6qn2YzE54M" data-bs-target="#videoModal">
-                        <span></span>
-                    </button>
-                    <!--MODIFICAR VIDEO O SLIDE-->
-                    <h5 class="font-weight-normal text-white m-0 ms-4 d-none d-sm-block">Reproducir Video</h5>
-                    <!--MODIFICAR VIDEO O SLIDE-->
                 </div>
             </div>
         </div>
     </div>
   </div>
-<!-- VIDEO O CARRUSEL FIN HERO-HEADER=STYLE -->
-<!--                    ^                   -->
-<!--         MODULO DE POSIBLE VIDEO        -->
-<div class="modal fade" id="videoModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content rounded-0">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Youtube Video</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <!-- 16:9  -->
-                <div class="ratio ratio-16x9">
-                    <iframe class="embed-responsive-item" src="" id="video" allowfullscreen allowscriptaccess="always"
-                        allow="autoplay"></iframe>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- MODULO DE POSIBLE VIDEO  -->
-
 <!-- ABOUT INICIO-->
+
 <div class="container-fluid py-5">
-	<div class="container">
-			<div class="row gx-5">
-					<div class="col-lg-5 mb-5 mb-lg-0" style="min-height: 500px;">
-							<div class="position-relative h-100">
-									<img class="position-absolute w-100 h-100 rounded" src="{% static 'core/img/about.jpg'%}" style="object-fit: cover;">
-							</div>
-					</div>
-					<div class="col-lg-7">
-							<div class="border-start border-5 border-primary ps-5 mb-5">
-									<h6 class="text-primary text-uppercase">Mas de nosotros</h6>
-									<h1 class="display-5 text-uppercase mb-0">Mantenemos a sus mascotas felices todo el tiempo</h1>
-							</div>
-							<h4 class="text-body mb-4">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Possimus, temporibus?</h4>
-							<div class="bg-light p-4">
-									<ul class="nav nav-pills justify-content-between mb-3" id="pills-tab" role="tablist">
-											<li class="nav-item w-50" role="presentation">
-													<button class="nav-link text-uppercase w-100 active" id="pills-1-tab" data-bs-toggle="pill"
-															data-bs-target="#pills-1" type="button" role="tab" aria-controls="pills-1"
-															aria-selected="true">Nuestro objetivo</button>
-											</li>
-											<li class="nav-item w-50" role="presentation">
-													<button class="nav-link text-uppercase w-100" id="pills-2-tab" data-bs-toggle="pill"
-															data-bs-target="#pills-2" type="button" role="tab" aria-controls="pills-2"
-															aria-selected="false">Nuestra visión</button>
-											</li>
-									</ul>
-									<div class="tab-content" id="pills-tabContent">
-											<div class="tab-pane fade show active" id="pills-1" role="tabpanel" aria-labelledby="pills-1-tab">
-													<p class="mb-0">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quae quam inventore modi dolore quas? Ut pariatur repellat maxime dolorum quae, consectetur sunt repellendus, animi ipsam quia alias hic repudiandae necessitatibus!</p>
-											</div>
-                  <!--REALIZAR TRANSICION ENTRE OBETIVO Y VISION CON -->
-											<div class="tab-pane fade" id="pills-2" role="tabpanel" aria-labelledby="pills-2-tab">
-													<p class="mb-0">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laborum ipsam vitae vero maiores esse quae magnam? Facere quaerat ipsam molestias excepturi quo ipsa, explicabo nostrum, sed officia quam optio minus?</p>
-											</div>
-									</div>
-							</div>
-					</div>
-			</div>
-	</div>
+  <div class="container">
+    <div class="row gx-5">
+      <div class="col-lg-5 mb-5 mb-lg-0" style="min-height: 500px;">
+        <div class="position-relative h-100">
+          <img class="position-absolute w-100 h-100 rounded" src="{% static 'core/img/about.jpg'%}" style="object-fit: cover;">
+        </div>
+      </div>
+      <div class="col-lg-7">
+        <div class="border-start border-5 border-primary ps-5 mb-5 rounded">
+          <h6 class="text-primary text-uppercase">Más de nosotros</h6>
+          <h1 class="display-5 text-uppercase mb-0">Mantenemos a sus mascotas felices todo el tiempo</h1>
+        </div>
+        <h4 class="text-body mb-4">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Possimus, temporibus?</h4>
+        <div class="bg-light p-4 rounded">
+          <ul class="nav nav-pills justify-content-between mb-3" id="pills-tab" role="tablist">
+            <li class="nav-item w-50" role="presentation">
+              <button class="nav-link text-uppercase w-100 active rounded-pill" id="pills-1-tab" data-bs-toggle="pill"
+                data-bs-target="#pills-1" type="button" role="tab" aria-controls="pills-1" aria-selected="true">Nuestro objetivo</button>
+            </li>
+            <li class="nav-item w-50" role="presentation">
+              <button class="nav-link text-uppercase w-100 rounded-pill" id="pills-2-tab" data-bs-toggle="pill"
+                data-bs-target="#pills-2" type="button" role="tab" aria-controls="pills-2" aria-selected="false">Nuestra visión</button>
+            </li>
+          </ul>
+          <div class="tab-content" id="pills-tabContent">
+            <div class="tab-pane fade show active" id="pills-1" role="tabpanel" aria-labelledby="pills-1-tab">
+              <p class="mb-0">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quae quam inventore modi dolore quas? Ut pariatur repellat maxime dolorum quae, consectetur sunt repellendus, animi ipsam quia alias hic repudiandae necessitatibus!</p>
+            </div>
+            <div class="tab-pane fade" id="pills-2" role="tabpanel" aria-labelledby="pills-2-tab">
+              <p class="mb-0">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laborum ipsam vitae vero maiores esse quae magnam? Facere quaerat ipsam molestias excepturi quo ipsa, explicabo nostrum, sed officia quam optio minus?</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 <!-- ABOUT FIN -->
 
 <!-- SERVICIOS INICIO -->
+
 <div class="container-fluid py-5">
   <div class="container">
-      <div class="border-start border-5 border-primary ps-5 mb-5" style="max-width: 600px;">
-          <h6 class="text-primary text-uppercase">Servicios</h6>
-          <h1 class="display-5 text-uppercase mb-0">Nuestros servicios de cuidado de mascotas</h1>
+    <div class="border-start border-5 border-primary ps-5 mb-5" style="max-width: 600px;">
+      <h6 class="text-primary text-uppercase">Servicios</h6>
+      <h1 class="display-5 text-uppercase mb-0">Nuestros servicios de cuidado de mascotas</h1>
+    </div>
+    <div class="row g-5">
+      <div class="col-md-6">
+        <div class="service-item bg-light d-flex p-4" style="background-color: #96d98424 !important; margin: 20px; border-radius: 10px;">
+          <i class="flaticon-house display-1 text-primary me-4"></i>
+          <div>
+            <h5 class="text-uppercase mb-3">Alojamiento de mascotas</h5>
+            <p>Kasd dolor no lorem sit tempor at justo rebum rebum stet justo elitr dolor amet sit</p>
+            <a class="text-primary text-uppercase" href="">Leer más<i class="bi bi-chevron-right"></i></a>
+          </div>
+        </div>
       </div>
-      <div class="row g-5">
-          <div class="col-md-6">
-              <div class="service-item bg-light d-flex p-4">
-                  <i class="flaticon-house display-1 text-primary me-4"></i>
-                  <div>
-                      <h5 class="text-uppercase mb-3">Alojamiento de mascotas</h5>
-                      <p>Kasd dolor no lorem sit tempor at justo rebum rebum stet justo elitr dolor amet sit</p>
-                      <a class="text-primary text-uppercase" href="">Leer más<i class="bi bi-chevron-right"></i></a>
-                  </div>
-              </div>
+      <div class="col-md-6">
+        <div class="service-item bg-light d-flex p-4" style="background-color: #96d98424 !important; margin: 20px; border-radius: 10px;">
+          <i class="flaticon-food display-1 text-primary me-4"></i>
+          <div>
+            <h5 class="text-uppercase mb-3">Alimentación de mascotas</h5>
+            <p>Kasd dolor no lorem sit tempor at justo rebum rebum stet justo elitr dolor amet sit</p>
+            <a class="text-primary text-uppercase" href="">Leer más<i class="bi bi-chevron-right"></i></a>
           </div>
-          <div class="col-md-6">
-              <div class="service-item bg-light d-flex p-4">
-                  <i class="flaticon-food display-1 text-primary me-4"></i>
-                  <div>
-                      <h5 class="text-uppercase mb-3">Alimentación de mascotas</h5>
-                      <p>Kasd dolor no lorem sit tempor at justo rebum rebum stet justo elitr dolor amet sit</p>
-                      <a class="text-primary text-uppercase" href="">Leer más<i class="bi bi-chevron-right"></i></a>
-                  </div>
-              </div>
-          </div>
-          <div class="col-md-6">
-              <div class="service-item bg-light d-flex p-4">
-                  <i class="flaticon-grooming display-1 text-primary me-4"></i>
-                  <div>
-                      <h5 class="text-uppercase mb-3">Aseo de mascotas</h5>
-                      <p>Kasd dolor no lorem sit tempor at justo rebum rebum stet justo elitr dolor amet sit</p>
-                      <a class="text-primary text-uppercase" href="">Leer más<i class="bi bi-chevron-right"></i></a>
-                  </div>
-              </div>
-          </div>
-          <div class="col-md-6">
-              <div class="service-item bg-light d-flex p-4">
-                  <i class="flaticon-cat display-1 text-primary me-4"></i>
-                  <div>
-                      <h5 class="text-uppercase mb-3">Entrenamiento de mascotas</h5>
-                      <p>Kasd dolor no lorem sit tempor at justo rebum rebum stet justo elitr dolor amet sit</p>
-                      <a class="text-primary text-uppercase" href="">Leer más<i class="bi bi-chevron-right"></i></a>
-                  </div>
-              </div>
-          </div>
-          <div class="col-md-6">
-              <div class="service-item bg-light d-flex p-4">
-                  <i class="flaticon-dog display-1 text-primary me-4"></i>
-                  <div>
-                      <h5 class="text-uppercase mb-3">Ejercicio para mascotas</h5>
-                      <p>Kasd dolor no lorem sit tempor at justo rebum rebum stet justo elitr dolor amet sit</p>
-                      <a class="text-primary text-uppercase" href="">Leer más<i class="bi bi-chevron-right"></i></a>
-                  </div>
-              </div>
-          </div>
-          <div class="col-md-6">
-              <div class="service-item bg-light d-flex p-4">
-                  <i class="flaticon-vaccine display-1 text-primary me-4"></i>
-                  <div>
-                      <h5 class="text-uppercase mb-3">Tratamiento de mascotas</h5>
-                      <p>Kasd dolor no lorem sit tempor at justo rebum rebum stet justo elitr dolor amet sit</p>
-                      <a class="text-primary text-uppercase" href="">Leer más<i class="bi bi-chevron-right"></i></a>
-                  </div>
-              </div>
-          </div>
+        </div>
       </div>
+      <div class="col-md-6">
+        <div class="service-item bg-light d-flex p-4" style="background-color: #96d98424 !important; margin: 20px; border-radius: 10px;">
+          <i class="flaticon-grooming display-1 text-primary me-4"></i>
+          <div>
+            <h5 class="text-uppercase mb-3">Aseo de mascotas</h5>
+            <p>Kasd dolor no lorem sit tempor at justo rebum rebum stet justo elitr dolor amet sit</p>
+            <a class="text-primary text-uppercase" href="">Leer más<i class="bi bi-chevron-right"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="service-item bg-light d-flex p-4" style="background-color: #96d98424 !important; margin: 20px; border-radius: 10px;">
+          <i class="flaticon-cat display-1 text-primary me-4"></i>
+          <div>
+            <h5 class="text-uppercase mb-3">Entrenamiento de mascotas</h5>
+            <p>Kasd dolor no lorem sit tempor at justo rebum rebum stet justo elitr dolor amet sit</p>
+            <a class="text-primary text-uppercase" href="">Leer más<i class="bi bi-chevron-right"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="service-item bg-light d-flex p-4" style="background-color: #96d98424 !important; margin: 20px; border-radius: 10px;">
+          <i class="flaticon-dog display-1 text-primary me-4"></i>
+          <div>
+            <h5 class="text-uppercase mb-3">Ejercicio para mascotas</h5>
+            <p>Kasd dolor no lorem sit tempor at justo rebum rebum stet justo elitr dolor amet sit</p>
+            <a class="text-primary text-uppercase" href="">Leer más<i class="bi bi-chevron-right"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="service-item bg-light d-flex p-4" style="background-color: #96d98424 !important; margin: 20px; border-radius: 10px;">
+          <i class="flaticon-vaccine display-1 text-primary me-4"></i>
+          <div>
+            <h5 class="text-uppercase mb-3">Tratamiento de mascotas</h5>
+            <p>Kasd dolor no lorem sit tempor at justo rebum rebum stet justo elitr dolor amet sit</p>
+            <a class="text-primary text-uppercase" href="">Leer más<i class="bi bi-chevron-right"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 <!-- SERVICIOS FIN-->
-
-
-<!-- PRODUCTOS INICIO -->
-<div class="container-fluid py-5">
-    <div class="container">
-        <div class="border-start border-5 border-primary ps-5 mb-5" style="max-width: 600px;">
-            <h6 class="text-primary text-uppercase">Productos</h6>
-            <h1 class="display-5 text-uppercase mb-0">Productos para tus mejores amigos</h1>
-          </div>
-          <div class="owl-carousel product-carousel">
-              {% for aux in listado %}
-              <div class="pb-5">
-                <div class="product-item position-relative bg-light d-flex flex-column text-center">
-                    <img class="img-fluid mb-4" src="{{ aux.imagen }}" alt="">
-                    <h6 class="text-uppercase">{{ aux.nombre }}</h6>
-                    <p class="card-text">{{ aux.descripcion }}</p>
-                    <p class="card-text">Stock: {{ aux.stock }}</p>
-                    <h5 class="text-primary mb-0">Precio: ${{ aux.precio }}</h5>
-                    <div class="btn-action d-flex justify-content-center">
-                        {% if user.is_authenticated %}
-                        <a href="{% url 'add' %}" class="btn btn-primary">Agregar</a>
-                        <a href="{% url 'update' aux.id %}" class="btn btn-primary">Modificar</a>
-                        <a href="{% url 'delete' aux.id %}" class="btn btn-primary">Eliminar</a>
-                        {% else %}
-                        <a href="{% url 'oneProduct' %}" class="btn btn-primary">ver mas..</a>
-                        {% endif %}
-                    </div>
-                </div>
-  
+<div class="container" style="margin-bottom: 150px;">
+  <div class="border-start border-5 border-primary ps-5 mb-5 my-5" style="max-width: 800px;">
+    <h1 class="display-5 text-uppercase mb-0">Productos para tus mejores amigos</h1>
+  </div>
+  <div class="container">
+    <div class="row">
+      {% for aux in listado %}
+      <div class="col-lg-3 col-md-4 mb-4">
+        <div class="product-item position-relative bg-light d-flex flex-column text-center" style="background-color:#96d98424 !important; width: 260px; height: 460px; margin: 20px; border-radius: 10px;">
+          <img src="{{ aux.imagen.url }} " class="img-fluid mb-4" style="object-fit: contain; display: flex; justify-content: center; height: 250px; align-items: center;" alt="Fissure in Sandstone" />
+          <div class="card-body d-flex flex-column justify-content-between">
+            <div>
+              <h5 class="card-title">{{ aux.nombre }}</h5>
+              <div class="stock-container" style="position: absolute; top: 380px; left: 85px; text-align: center;">
+                {% if aux.stock > 0 %}
+                <p class="card-text stock">Stock: {{ aux.stock }}</p>
+                {% else %}
+                <p class="card-text stock" style="color: red;">SIN STOCK</p>
+                {% endif %}
+              </div>
             </div>
-            {% endfor %}
-            
-  
+            <div>
+              <p class="card-text price" style="position: absolute; top: 420px; left: 100px; color: forestgreen;"><strong>${{ aux.precio }}</strong></p>
+              <div class="btn-action d-flex justify-content-center">
+                {% if user.is_authenticated and user.groups.exists %}
+                  {% for group in user.groups.all %}
+                    {% if group.name == 'cliente' %}
+                      <a href="{% url 'oneProduct' aux.id %}" class="btn btn-primary" style="border-radius: 10px; margin: 3px; "><i class="bi bi-eye"></i></a><!--ver mas-->
+                    {% endif %}
+                  {% endfor %}
+                {% endif %}
+                {% if user.is_authenticated and user.groups.exists %}
+                  {% for group in user.groups.all %}
+                    {% if group.name == 'administradores' %}
+                      <a href="{% url 'oneProduct' aux.id %}" class="btn btn-primary" style="border-radius: 10px; margin: 3px; "><i class="bi bi-eye"></i></a><!--ver mas-->
+                      <a href="{% url 'add' %}" class="btn btn-primary" style="border-radius: 10px; margin: 3px;"><i class="bi bi-plus-circle"></i></a><!--Agregar-->
+                      <a href="{% url 'update' aux.id %}" class="btn btn-primary" style="border-radius: 10px; margin: 3px;"><i class="bi bi-arrow-repeat"></i></a><!--modificar-->
+                      <a onclick="deleteProducto('{{ aux.id }}')" class="btn btn-primary" style="border-radius: 10px; margin: 3px;"><i class="bi bi-trash"></i></a><!--eliminar-->
+                    {% endif %}
+                  {% endfor %}
+                {% endif %}
+                {% if user.is_authenticated and user.groups.exists %}
+                {% for group in user.groups.all %}
+                  {% if group.name == 'vendedor' %}
+                    <a href="{% url 'oneProduct' aux.id %}" class="btn btn-primary" style="border-radius: 10px; margin: 3px; "><i class="bi bi-eye"></i></a><!--ver mas-->
+                    <a href="{% url 'add' %}" class="btn btn-primary" style="border-radius: 10px; margin: 3px;"><i class="bi bi-plus-circle"></i></a><!--Agregar-->
+                    <a href="{% url 'update' aux.id %}" class="btn btn-primary" style="border-radius: 10px; margin: 3px;"><i class="bi bi-arrow-repeat"></i></a><!--modificar-->
+                  {% endif %}
+                {% endfor %}
+              {% endif %}
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
+      {% endfor %}
     </div>
   </div>
-
-
-
-
-
-
-
-
-
-
-  
-
-<!-- PRODUCTOS FIN -->
+</div>
 
 
 <!-- OFERTAS INICIO -->
@@ -274,6 +258,6 @@
 
 {% endblock %}
 {% block js %}
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-  <script src="{% static 'core/js/mensajeProducto.js' %}"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="{% static 'core/js/mensajeProducto.js' %}"></script>
 {% endblock %}
