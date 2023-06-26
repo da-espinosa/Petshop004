@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 06-06-2023 a las 15:49:40
--- Versión del servidor: 10.4.27-MariaDB
--- Versión de PHP: 8.2.0
+-- Tiempo de generación: 24-06-2023 a las 01:50:48
+-- Versión del servidor: 10.4.28-MariaDB
+-- Versión de PHP: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -26,76 +26,72 @@ USE `petshop`;
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `admin_interface_theme`
+-- Estructura de tabla para la tabla `authentication_user`
 --
 
-CREATE TABLE `admin_interface_theme` (
+CREATE TABLE `authentication_user` (
   `id` int(11) NOT NULL,
-  `name` varchar(50) NOT NULL,
-  `active` tinyint(1) NOT NULL,
-  `title` varchar(50) NOT NULL,
-  `title_visible` tinyint(1) NOT NULL,
-  `logo` varchar(100) NOT NULL,
-  `logo_visible` tinyint(1) NOT NULL,
-  `css_header_background_color` varchar(10) NOT NULL,
-  `title_color` varchar(10) NOT NULL,
-  `css_header_text_color` varchar(10) NOT NULL,
-  `css_header_link_color` varchar(10) NOT NULL,
-  `css_header_link_hover_color` varchar(10) NOT NULL,
-  `css_module_background_color` varchar(10) NOT NULL,
-  `css_module_text_color` varchar(10) NOT NULL,
-  `css_module_link_color` varchar(10) NOT NULL,
-  `css_module_link_hover_color` varchar(10) NOT NULL,
-  `css_module_rounded_corners` tinyint(1) NOT NULL,
-  `css_generic_link_color` varchar(10) NOT NULL,
-  `css_generic_link_hover_color` varchar(10) NOT NULL,
-  `css_save_button_background_color` varchar(10) NOT NULL,
-  `css_save_button_background_hover_color` varchar(10) NOT NULL,
-  `css_save_button_text_color` varchar(10) NOT NULL,
-  `css_delete_button_background_color` varchar(10) NOT NULL,
-  `css_delete_button_background_hover_color` varchar(10) NOT NULL,
-  `css_delete_button_text_color` varchar(10) NOT NULL,
-  `list_filter_dropdown` tinyint(1) NOT NULL,
-  `related_modal_active` tinyint(1) NOT NULL,
-  `related_modal_background_color` varchar(10) NOT NULL,
-  `related_modal_rounded_corners` tinyint(1) NOT NULL,
-  `logo_color` varchar(10) NOT NULL,
-  `recent_actions_visible` tinyint(1) NOT NULL,
-  `favicon` varchar(100) NOT NULL,
-  `related_modal_background_opacity` varchar(5) NOT NULL,
-  `env_name` varchar(50) NOT NULL,
-  `env_visible_in_header` tinyint(1) NOT NULL,
-  `env_color` varchar(10) NOT NULL,
-  `env_visible_in_favicon` tinyint(1) NOT NULL,
-  `related_modal_close_button_visible` tinyint(1) NOT NULL,
-  `language_chooser_active` tinyint(1) NOT NULL,
-  `language_chooser_display` varchar(10) NOT NULL,
-  `list_filter_sticky` tinyint(1) NOT NULL,
-  `form_pagination_sticky` tinyint(1) NOT NULL,
-  `form_submit_sticky` tinyint(1) NOT NULL,
-  `css_module_background_selected_color` varchar(10) NOT NULL,
-  `css_module_link_selected_color` varchar(10) NOT NULL,
-  `logo_max_height` smallint(5) UNSIGNED NOT NULL CHECK (`logo_max_height` >= 0),
-  `logo_max_width` smallint(5) UNSIGNED NOT NULL CHECK (`logo_max_width` >= 0),
-  `foldable_apps` tinyint(1) NOT NULL,
-  `language_chooser_control` varchar(20) NOT NULL,
-  `list_filter_highlight` tinyint(1) NOT NULL,
-  `list_filter_removal_links` tinyint(1) NOT NULL,
-  `show_fieldsets_as_tabs` tinyint(1) NOT NULL,
-  `show_inlines_as_tabs` tinyint(1) NOT NULL,
-  `css_generic_link_active_color` varchar(10) NOT NULL,
-  `collapsible_stacked_inlines` tinyint(1) NOT NULL,
-  `collapsible_stacked_inlines_collapsed` tinyint(1) NOT NULL,
-  `collapsible_tabular_inlines` tinyint(1) NOT NULL,
-  `collapsible_tabular_inlines_collapsed` tinyint(1) NOT NULL
+  `password` varchar(128) NOT NULL,
+  `last_login` datetime(6) DEFAULT NULL,
+  `is_superuser` tinyint(1) NOT NULL,
+  `username` varchar(100) NOT NULL,
+  `email` varchar(254) DEFAULT NULL,
+  `first_name` varchar(30) DEFAULT NULL,
+  `last_name` varchar(30) DEFAULT NULL,
+  `is_active` tinyint(1) NOT NULL,
+  `is_staff` tinyint(1) NOT NULL,
+  `date_joined` datetime(6) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
--- Volcado de datos para la tabla `admin_interface_theme`
+-- Volcado de datos para la tabla `authentication_user`
 --
 
-INSERT INTO `admin_interface_theme` (`id`, `name`, `active`, `title`, `title_visible`, `logo`, `logo_visible`, `css_header_background_color`, `title_color`, `css_header_text_color`, `css_header_link_color`, `css_header_link_hover_color`, `css_module_background_color`, `css_module_text_color`, `css_module_link_color`, `css_module_link_hover_color`, `css_module_rounded_corners`, `css_generic_link_color`, `css_generic_link_hover_color`, `css_save_button_background_color`, `css_save_button_background_hover_color`, `css_save_button_text_color`, `css_delete_button_background_color`, `css_delete_button_background_hover_color`, `css_delete_button_text_color`, `list_filter_dropdown`, `related_modal_active`, `related_modal_background_color`, `related_modal_rounded_corners`, `logo_color`, `recent_actions_visible`, `favicon`, `related_modal_background_opacity`, `env_name`, `env_visible_in_header`, `env_color`, `env_visible_in_favicon`, `related_modal_close_button_visible`, `language_chooser_active`, `language_chooser_display`, `list_filter_sticky`, `form_pagination_sticky`, `form_submit_sticky`, `css_module_background_selected_color`, `css_module_link_selected_color`, `logo_max_height`, `logo_max_width`, `foldable_apps`, `language_chooser_control`, `list_filter_highlight`, `list_filter_removal_links`, `show_fieldsets_as_tabs`, `show_inlines_as_tabs`, `css_generic_link_active_color`, `collapsible_stacked_inlines`, `collapsible_stacked_inlines_collapsed`, `collapsible_tabular_inlines`, `collapsible_tabular_inlines_collapsed`) VALUES
-(1, 'Django', 1, 'Administración de Django', 1, '', 1, '#0C4B33', '#F5DD5D', '#44B78B', '#FFFFFF', '#C9F0DD', '#44B78B', '#FFFFFF', '#FFFFFF', '#C9F0DD', 1, '#0C3C26', '#156641', '#0C4B33', '#0C3C26', '#FFFFFF', '#BA2121', '#A41515', '#FFFFFF', 1, 1, '#000000', 1, '#FFFFFF', 1, '', '0.3', '', 1, '#E74C3C', 1, 1, 1, 'code', 1, 0, 0, '#FFFFCC', '#FFFFFF', 100, 400, 1, 'default-select', 1, 0, 0, 0, '#29B864', 0, 1, 0, 1);
+INSERT INTO `authentication_user` (`id`, `password`, `last_login`, `is_superuser`, `username`, `email`, `first_name`, `last_name`, `is_active`, `is_staff`, `date_joined`) VALUES
+(1, 'pbkdf2_sha256$216000$yvjlF1Y9U4ni$2K+OXM/UU9+Kr9pHBMa3A0KJpfLbCOZ3yUz+Uprkfd4=', '2023-06-23 23:34:04.007927', 1, 'admin', 'da.espinosa@duocuc.cl', 'admin', 'admin', 1, 1, '2023-06-14 00:44:11.698477'),
+(2, 'pbkdf2_sha256$216000$8plPymjFJYQH$yaEaT+fTqFOQpeXMr1BP1XEqkglt7apGrDNzPNBuw8c=', '2023-06-22 23:32:02.000000', 0, 'deivid', 'espinosadavidalexander@duocuc.cl', NULL, NULL, 1, 0, '2023-06-14 00:45:26.640879'),
+(9, 'pbkdf2_sha256$216000$smTDmJKeoViv$8611t/9mqySbotaaI+WJ871EdTRtopfO9TOs8gi34MA=', '2023-06-23 23:33:45.976119', 0, 'vendedor', 'vendedor123@gmail.com', NULL, NULL, 1, 0, '2023-06-22 23:34:59.650973'),
+(10, 'pbkdf2_sha256$216000$hKgEXzu3bXTe$KbPzbO5715QJN0ZRn5hPIvOVEDSrlkcAJSmT/OAcmqM=', '2023-06-23 23:32:54.774086', 0, 'bigboss', 'bigboss@gmail.com', NULL, NULL, 1, 0, '2023-06-22 23:42:59.846119'),
+(11, 'pbkdf2_sha256$216000$2wACsB3kEqXj$OcxnZ/qSCklVV5IiNEHxtxoCBPnphjfV3bK4NpawOPM=', '2023-06-23 23:34:35.110519', 0, 'cliente', 'cliente@gmail.com', NULL, NULL, 1, 0, '2023-06-22 23:43:45.645783'),
+(13, 'pbkdf2_sha256$216000$hjKSAJaCut0G$007Q8TAY6S2EustEFNcyJXIZl7aztH3oR+oJABVym4U=', '2023-06-23 23:10:41.629405', 0, 'cliente2', 'cliente2@gmail.com', NULL, NULL, 1, 0, '2023-06-23 23:09:59.420043');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `authentication_user_groups`
+--
+
+CREATE TABLE `authentication_user_groups` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `group_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Volcado de datos para la tabla `authentication_user_groups`
+--
+
+INSERT INTO `authentication_user_groups` (`id`, `user_id`, `group_id`) VALUES
+(6, 1, 3),
+(7, 1, 4),
+(5, 1, 5),
+(12, 2, 5),
+(11, 9, 3),
+(13, 10, 5),
+(14, 11, 4),
+(16, 13, 4);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `authentication_user_user_permissions`
+--
+
+CREATE TABLE `authentication_user_user_permissions` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `permission_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
 
@@ -108,6 +104,15 @@ CREATE TABLE `auth_group` (
   `name` varchar(150) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
+--
+-- Volcado de datos para la tabla `auth_group`
+--
+
+INSERT INTO `auth_group` (`id`, `name`) VALUES
+(5, 'administradores'),
+(4, 'cliente'),
+(3, 'vendedor');
+
 -- --------------------------------------------------------
 
 --
@@ -119,6 +124,76 @@ CREATE TABLE `auth_group_permissions` (
   `group_id` int(11) NOT NULL,
   `permission_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Volcado de datos para la tabla `auth_group_permissions`
+--
+
+INSERT INTO `auth_group_permissions` (`id`, `group_id`, `permission_id`) VALUES
+(70, 3, 25),
+(71, 3, 26),
+(72, 3, 27),
+(73, 3, 28),
+(74, 3, 29),
+(75, 3, 30),
+(76, 3, 31),
+(69, 3, 32),
+(77, 4, 32),
+(78, 4, 37),
+(79, 4, 38),
+(80, 4, 39),
+(81, 4, 40),
+(82, 4, 45),
+(83, 4, 47),
+(84, 4, 48),
+(85, 5, 1),
+(86, 5, 2),
+(87, 5, 3),
+(88, 5, 4),
+(89, 5, 5),
+(90, 5, 6),
+(91, 5, 7),
+(92, 5, 8),
+(93, 5, 9),
+(94, 5, 10),
+(95, 5, 11),
+(96, 5, 12),
+(97, 5, 13),
+(98, 5, 14),
+(99, 5, 15),
+(100, 5, 16),
+(101, 5, 17),
+(102, 5, 18),
+(103, 5, 19),
+(104, 5, 20),
+(105, 5, 21),
+(106, 5, 22),
+(107, 5, 23),
+(108, 5, 24),
+(109, 5, 25),
+(110, 5, 26),
+(111, 5, 27),
+(112, 5, 28),
+(113, 5, 29),
+(114, 5, 30),
+(115, 5, 31),
+(116, 5, 32),
+(117, 5, 33),
+(118, 5, 34),
+(119, 5, 35),
+(120, 5, 36),
+(121, 5, 37),
+(122, 5, 38),
+(123, 5, 39),
+(124, 5, 40),
+(125, 5, 41),
+(126, 5, 42),
+(127, 5, 43),
+(128, 5, 44),
+(129, 5, 45),
+(130, 5, 46),
+(131, 5, 47),
+(132, 5, 48);
 
 -- --------------------------------------------------------
 
@@ -138,105 +213,86 @@ CREATE TABLE `auth_permission` (
 --
 
 INSERT INTO `auth_permission` (`id`, `name`, `content_type_id`, `codename`) VALUES
-(1, 'Can add Theme', 1, 'add_theme'),
-(2, 'Can change Theme', 1, 'change_theme'),
-(3, 'Can delete Theme', 1, 'delete_theme'),
-(4, 'Can view Theme', 1, 'view_theme'),
-(5, 'Can add log entry', 2, 'add_logentry'),
-(6, 'Can change log entry', 2, 'change_logentry'),
-(7, 'Can delete log entry', 2, 'delete_logentry'),
-(8, 'Can view log entry', 2, 'view_logentry'),
-(9, 'Can add permission', 3, 'add_permission'),
-(10, 'Can change permission', 3, 'change_permission'),
-(11, 'Can delete permission', 3, 'delete_permission'),
-(12, 'Can view permission', 3, 'view_permission'),
-(13, 'Can add group', 4, 'add_group'),
-(14, 'Can change group', 4, 'change_group'),
-(15, 'Can delete group', 4, 'delete_group'),
-(16, 'Can view group', 4, 'view_group'),
-(17, 'Can add user', 5, 'add_user'),
-(18, 'Can change user', 5, 'change_user'),
-(19, 'Can delete user', 5, 'delete_user'),
-(20, 'Can view user', 5, 'view_user'),
-(21, 'Can add content type', 6, 'add_contenttype'),
-(22, 'Can change content type', 6, 'change_contenttype'),
-(23, 'Can delete content type', 6, 'delete_contenttype'),
-(24, 'Can view content type', 6, 'view_contenttype'),
-(25, 'Can add session', 7, 'add_session'),
-(26, 'Can change session', 7, 'change_session'),
-(27, 'Can delete session', 7, 'delete_session'),
-(28, 'Can view session', 7, 'view_session'),
-(29, 'Can add tipo producto', 8, 'add_tipoproducto'),
-(30, 'Can change tipo producto', 8, 'change_tipoproducto'),
-(31, 'Can delete tipo producto', 8, 'delete_tipoproducto'),
-(32, 'Can view tipo producto', 8, 'view_tipoproducto'),
-(33, 'Can add producto', 9, 'add_producto'),
-(34, 'Can change producto', 9, 'change_producto'),
-(35, 'Can delete producto', 9, 'delete_producto'),
-(36, 'Can view producto', 9, 'view_producto'),
-(37, 'Can add cliente', 10, 'add_cliente'),
-(38, 'Can change cliente', 10, 'change_cliente'),
-(39, 'Can delete cliente', 10, 'delete_cliente'),
-(40, 'Can view cliente', 10, 'view_cliente'),
-(41, 'Can add comentario', 11, 'add_comentario'),
-(42, 'Can change comentario', 11, 'change_comentario'),
-(43, 'Can delete comentario', 11, 'delete_comentario'),
-(44, 'Can view comentario', 11, 'view_comentario'),
-(45, 'Can add subscripcion', 12, 'add_subscripcion'),
-(46, 'Can change subscripcion', 12, 'change_subscripcion'),
-(47, 'Can delete subscripcion', 12, 'delete_subscripcion'),
-(48, 'Can view subscripcion', 12, 'view_subscripcion');
+(1, 'Can add log entry', 1, 'add_logentry'),
+(2, 'Can change log entry', 1, 'change_logentry'),
+(3, 'Can delete log entry', 1, 'delete_logentry'),
+(4, 'Can view log entry', 1, 'view_logentry'),
+(5, 'Can add permission', 2, 'add_permission'),
+(6, 'Can change permission', 2, 'change_permission'),
+(7, 'Can delete permission', 2, 'delete_permission'),
+(8, 'Can view permission', 2, 'view_permission'),
+(9, 'Can add group', 3, 'add_group'),
+(10, 'Can change group', 3, 'change_group'),
+(11, 'Can delete group', 3, 'delete_group'),
+(12, 'Can view group', 3, 'view_group'),
+(13, 'Can add content type', 4, 'add_contenttype'),
+(14, 'Can change content type', 4, 'change_contenttype'),
+(15, 'Can delete content type', 4, 'delete_contenttype'),
+(16, 'Can view content type', 4, 'view_contenttype'),
+(17, 'Can add session', 5, 'add_session'),
+(18, 'Can change session', 5, 'change_session'),
+(19, 'Can delete session', 5, 'delete_session'),
+(20, 'Can view session', 5, 'view_session'),
+(21, 'Can add cliente', 6, 'add_cliente'),
+(22, 'Can change cliente', 6, 'change_cliente'),
+(23, 'Can delete cliente', 6, 'delete_cliente'),
+(24, 'Can view cliente', 6, 'view_cliente'),
+(25, 'Can add tipo producto', 7, 'add_tipoproducto'),
+(26, 'Can change tipo producto', 7, 'change_tipoproducto'),
+(27, 'Can delete tipo producto', 7, 'delete_tipoproducto'),
+(28, 'Can view tipo producto', 7, 'view_tipoproducto'),
+(29, 'Can add producto', 8, 'add_producto'),
+(30, 'Can change producto', 8, 'change_producto'),
+(31, 'Can delete producto', 8, 'delete_producto'),
+(32, 'Can view producto', 8, 'view_producto'),
+(33, 'Can add comentario', 9, 'add_comentario'),
+(34, 'Can change comentario', 9, 'change_comentario'),
+(35, 'Can delete comentario', 9, 'delete_comentario'),
+(36, 'Can view comentario', 9, 'view_comentario'),
+(37, 'Can add carrito', 10, 'add_carrito'),
+(38, 'Can change carrito', 10, 'change_carrito'),
+(39, 'Can delete carrito', 10, 'delete_carrito'),
+(40, 'Can view carrito', 10, 'view_carrito'),
+(41, 'Can add user', 11, 'add_user'),
+(42, 'Can change user', 11, 'change_user'),
+(43, 'Can delete user', 11, 'delete_user'),
+(44, 'Can view user', 11, 'view_user'),
+(45, 'Can add suscripcion', 12, 'add_suscripcion'),
+(46, 'Can change suscripcion', 12, 'change_suscripcion'),
+(47, 'Can delete suscripcion', 12, 'delete_suscripcion'),
+(48, 'Can view suscripcion', 12, 'view_suscripcion'),
+(49, 'Can add seguimiento', 13, 'add_seguimiento'),
+(50, 'Can change seguimiento', 13, 'change_seguimiento'),
+(51, 'Can delete seguimiento', 13, 'delete_seguimiento'),
+(52, 'Can view seguimiento', 13, 'view_seguimiento'),
+(53, 'Can add estado', 14, 'add_estado'),
+(54, 'Can change estado', 14, 'change_estado'),
+(55, 'Can delete estado', 14, 'delete_estado'),
+(56, 'Can view estado', 14, 'view_estado');
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `auth_user`
+-- Estructura de tabla para la tabla `core_carrito`
 --
 
-CREATE TABLE `auth_user` (
+CREATE TABLE `core_carrito` (
   `id` int(11) NOT NULL,
-  `password` varchar(128) NOT NULL,
-  `last_login` datetime(6) DEFAULT NULL,
-  `is_superuser` tinyint(1) NOT NULL,
-  `username` varchar(150) NOT NULL,
-  `first_name` varchar(150) NOT NULL,
-  `last_name` varchar(150) NOT NULL,
-  `email` varchar(254) NOT NULL,
-  `is_staff` tinyint(1) NOT NULL,
-  `is_active` tinyint(1) NOT NULL,
-  `date_joined` datetime(6) NOT NULL
+  `cantidad` int(11) NOT NULL,
+  `cliente_id` int(11) NOT NULL,
+  `producto_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
--- Volcado de datos para la tabla `auth_user`
+-- Volcado de datos para la tabla `core_carrito`
 --
 
-INSERT INTO `auth_user` (`id`, `password`, `last_login`, `is_superuser`, `username`, `first_name`, `last_name`, `email`, `is_staff`, `is_active`, `date_joined`) VALUES
-(1, 'pbkdf2_sha256$216000$HqCtnTbTs3Uh$tERBrPo4aWro77d5U70HJdadCqIv9wnUe2nmFMUQ+24=', '2023-06-06 13:34:32.304451', 1, 'admin', '', '', 'da.espinosa@duocuc.cl', 1, 1, '2023-06-06 13:22:59.910624');
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `auth_user_groups`
---
-
-CREATE TABLE `auth_user_groups` (
-  `id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL,
-  `group_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `auth_user_user_permissions`
---
-
-CREATE TABLE `auth_user_user_permissions` (
-  `id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL,
-  `permission_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+INSERT INTO `core_carrito` (`id`, `cantidad`, `cliente_id`, `producto_id`) VALUES
+(16, 5, 1, 1),
+(17, 5, 1, 2),
+(83, 2, 6, 1),
+(85, 10, 7, 2),
+(86, 6, 6, 2);
 
 -- --------------------------------------------------------
 
@@ -246,18 +302,21 @@ CREATE TABLE `auth_user_user_permissions` (
 
 CREATE TABLE `core_cliente` (
   `id` int(11) NOT NULL,
-  `user` varchar(30) NOT NULL,
-  `contrasena` varchar(20) NOT NULL,
   `nombre` varchar(40) NOT NULL,
-  `apellido` varchar(40) NOT NULL
+  `apellido` varchar(40) NOT NULL,
+  `user_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Volcado de datos para la tabla `core_cliente`
 --
 
-INSERT INTO `core_cliente` (`id`, `user`, `contrasena`, `nombre`, `apellido`) VALUES
-(1, 'galeegalee', '12345678', 'gabriel', 'lopez');
+INSERT INTO `core_cliente` (`id`, `nombre`, `apellido`, `user_id`) VALUES
+(1, 'david', 'espinosa', 2),
+(4, 'homero', 'simpson', 9),
+(5, 'rodrigo', 'neres', 10),
+(6, 'kylian', 'mbappe', 11),
+(7, 'Brianeitor', 'perez', 13);
 
 -- --------------------------------------------------------
 
@@ -270,6 +329,27 @@ CREATE TABLE `core_comentario` (
   `resena` varchar(60) NOT NULL,
   `user_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `core_estado`
+--
+
+CREATE TABLE `core_estado` (
+  `id` int(11) NOT NULL,
+  `nombreEstado` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Volcado de datos para la tabla `core_estado`
+--
+
+INSERT INTO `core_estado` (`id`, `nombreEstado`) VALUES
+(1, 'Validación'),
+(2, 'Preparación'),
+(3, 'Reparto'),
+(4, 'Entrega');
 
 -- --------------------------------------------------------
 
@@ -292,21 +372,49 @@ CREATE TABLE `core_producto` (
 --
 
 INSERT INTO `core_producto` (`id`, `nombre`, `descripcion`, `precio`, `stock`, `imagen`, `tipo_id`) VALUES
-(2, 'bandana hojas', 'la bandana tiene un diseño de hojas', 2990, 100, 'bandana_amazonas.png', 1),
-(3, 'Correa 1', 'esta es la primera correa', 1990, 200, 'zeedog-trailla-armygreen.png', 3),
-(4, 'correa 2', 'esta es la segunda correa', 1590, 200, '500.webp', 3),
-(5, 'bandana 2', 'esta es la segunda bandana que agregamos', 1890, 20, 'bandana-ines.jpg', 1);
+(1, 'Bandana con diseño', 'Bandana con diseño perfecto para tu mascota.', 2670, 103, 'products-dog_bandana_front__RHuQ3Kc.png', 1),
+(2, 'Bandana negra', 'Es una bandana negra de tela suave.', 2888, 30, '8309790cd3a52443bb85ddb20d6bd707_7qNhRYs.png', 1),
+(4, 'Bandana con diseño', 'La bandana funciona como collar también.', 3450, 0, 'collar-para-perros-con-bandana-rosa-l.jpg', 1),
+(9, 'Identificador negro', 'Identificador para tu mascota.', 6480, 799, 'identificador_sS2PYJX.png', 2);
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `core_subscripcion`
+-- Estructura de tabla para la tabla `core_seguimiento`
 --
 
-CREATE TABLE `core_subscripcion` (
+CREATE TABLE `core_seguimiento` (
   `id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL
+  `nombre` varchar(30) NOT NULL,
+  `estado_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Volcado de datos para la tabla `core_seguimiento`
+--
+
+INSERT INTO `core_seguimiento` (`id`, `nombre`, `estado_id`) VALUES
+(2, 'lole', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `core_suscripcion`
+--
+
+CREATE TABLE `core_suscripcion` (
+  `id` int(11) NOT NULL,
+  `correo` varchar(60) NOT NULL,
+  `cliente_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Volcado de datos para la tabla `core_suscripcion`
+--
+
+INSERT INTO `core_suscripcion` (`id`, `correo`, `cliente_id`) VALUES
+(5, 'da.espinosa@duocuc.cl', 1),
+(6, 'cliente2@gmail.com', 7);
 
 -- --------------------------------------------------------
 
@@ -324,7 +432,7 @@ CREATE TABLE `core_tipoproducto` (
 --
 
 INSERT INTO `core_tipoproducto` (`id`, `nombreTipo`) VALUES
-(1, 'bandana'),
+(1, 'Bandana'),
 (2, 'Identificador'),
 (3, 'Correa');
 
@@ -350,10 +458,71 @@ CREATE TABLE `django_admin_log` (
 --
 
 INSERT INTO `django_admin_log` (`id`, `action_time`, `object_id`, `object_repr`, `action_flag`, `change_message`, `content_type_id`, `user_id`) VALUES
-(1, '2023-06-06 13:26:00.087511', '1', 'bandana', 1, '[{\"added\": {}}]', 8, 1),
-(2, '2023-06-06 13:26:06.052276', '1', 'Bandana', 1, '[{\"added\": {}}]', 9, 1),
-(3, '2023-06-06 13:37:39.057857', '2', 'Identificador', 1, '[{\"added\": {}}]', 8, 1),
-(4, '2023-06-06 13:37:50.095737', '3', 'Correa', 1, '[{\"added\": {}}]', 8, 1);
+(1, '2023-06-14 00:46:36.779034', '1', 'bandana', 1, '[{\"added\": {}}]', 7, 1),
+(2, '2023-06-14 00:46:39.248130', '1', 'bandana', 1, '[{\"added\": {}}]', 8, 1),
+(3, '2023-06-14 01:04:06.743721', '3', 'deivid', 3, '', 10, 1),
+(4, '2023-06-14 01:04:11.188771', '2', 'deivid', 3, '', 10, 1),
+(5, '2023-06-14 01:04:33.769558', '1', 'deivid', 3, '', 10, 1),
+(6, '2023-06-14 01:13:29.006260', '4', 'deivid', 3, '', 10, 1),
+(7, '2023-06-20 14:01:58.753283', '3', 'alex', 3, '', 11, 1),
+(8, '2023-06-21 18:15:25.254482', '1', 'deivid', 1, '[{\"added\": {}}]', 12, 1),
+(9, '2023-06-21 18:15:49.427888', '1', 'deivid', 3, '', 12, 1),
+(10, '2023-06-21 18:51:13.257282', '1', 'deivid', 1, '[{\"added\": {}}]', 12, 1),
+(11, '2023-06-21 18:51:18.796618', '1', 'deivid', 3, '', 12, 1),
+(12, '2023-06-21 18:58:30.743231', '2', 'deivid', 3, '', 12, 1),
+(13, '2023-06-21 19:00:10.021764', '3', 'deivid', 3, '', 12, 1),
+(14, '2023-06-21 19:17:37.042600', '4', 'deivid', 3, '', 12, 1),
+(15, '2023-06-22 22:28:25.882177', '4', 'alex', 3, '', 11, 1),
+(16, '2023-06-22 22:30:55.772992', '1', 'Vendedores', 1, '[{\"added\": {}}]', 3, 1),
+(17, '2023-06-22 22:32:17.710051', '5', 'vendedor', 1, '[{\"added\": {}}]', 11, 1),
+(18, '2023-06-22 22:35:13.691363', '5', 'vendedor', 2, '[{\"changed\": {\"fields\": [\"User permissions\"]}}]', 11, 1),
+(19, '2023-06-22 22:36:17.517355', '1', 'Vendedores', 2, '[{\"changed\": {\"fields\": [\"Permissions\"]}}]', 3, 1),
+(20, '2023-06-22 22:36:34.982208', '5', 'vendedor', 2, '[{\"changed\": {\"fields\": [\"User permissions\"]}}]', 11, 1),
+(21, '2023-06-22 22:37:25.893735', '5', 'vendedor', 3, '', 11, 1),
+(22, '2023-06-22 22:37:52.194429', '1', 'Vendedores', 3, '', 3, 1),
+(23, '2023-06-22 22:39:35.438328', '2', 'vendedores', 1, '[{\"added\": {}}]', 3, 1),
+(24, '2023-06-22 22:42:38.441669', '2', 'vendedores', 3, '', 3, 1),
+(25, '2023-06-22 22:45:04.112531', '3', 'vendedor', 1, '[{\"added\": {}}]', 3, 1),
+(26, '2023-06-22 22:48:43.430146', '4', 'cliente', 1, '[{\"added\": {}}]', 3, 1),
+(27, '2023-06-22 22:49:08.423921', '5', 'administradores', 1, '[{\"added\": {}}]', 3, 1),
+(28, '2023-06-22 22:52:16.343455', '6', 'vendedor', 1, '[{\"added\": {}}]', 11, 1),
+(29, '2023-06-22 22:53:46.158000', '7', 'cliente', 1, '[{\"added\": {}}]', 11, 1),
+(30, '2023-06-22 22:56:39.167395', '8', 'bigBoss', 1, '[{\"added\": {}}]', 11, 1),
+(31, '2023-06-22 22:56:59.244685', '7', 'cliente', 2, '[]', 11, 1),
+(32, '2023-06-22 22:58:10.558984', '8', 'bigBoss', 2, '[{\"changed\": {\"fields\": [\"Groups\"]}}]', 11, 1),
+(33, '2023-06-22 23:12:39.941058', '1', 'admin', 2, '[{\"changed\": {\"fields\": [\"Groups\", \"Email\"]}}]', 11, 1),
+(34, '2023-06-22 23:13:18.714527', '1', 'admin', 2, '[{\"changed\": {\"fields\": [\"Groups\"]}}]', 11, 1),
+(35, '2023-06-22 23:28:37.001785', '2', 'deivid', 2, '[{\"changed\": {\"fields\": [\"Groups\", \"Email\"]}}]', 11, 1),
+(36, '2023-06-22 23:30:03.926716', '2', 'deivid', 2, '[{\"changed\": {\"fields\": [\"Groups\"]}}]', 11, 1),
+(37, '2023-06-22 23:31:42.228212', '2', 'deivid', 2, '[{\"changed\": {\"fields\": [\"Groups\"]}}]', 11, 1),
+(38, '2023-06-22 23:34:00.004036', '6', 'vendedor', 3, '', 11, 1),
+(39, '2023-06-22 23:35:36.174799', '9', 'vendedor', 2, '[{\"changed\": {\"fields\": [\"Groups\", \"Email\"]}}]', 11, 1),
+(40, '2023-06-22 23:41:47.533374', '8', 'bigBoss', 3, '', 11, 1),
+(41, '2023-06-22 23:42:00.898697', '7', 'cliente', 3, '', 11, 1),
+(42, '2023-06-22 23:42:09.617290', '2', 'deivid', 2, '[{\"changed\": {\"fields\": [\"Groups\"]}}]', 11, 1),
+(43, '2023-06-22 23:44:11.161583', '10', 'bigboss', 2, '[{\"changed\": {\"fields\": [\"Groups\", \"Email\"]}}]', 11, 1),
+(44, '2023-06-22 23:44:26.406704', '11', 'cliente', 2, '[{\"changed\": {\"fields\": [\"Groups\", \"Email\"]}}]', 11, 1),
+(45, '2023-06-23 06:08:00.194285', '1', 'Validación', 1, '[{\"added\": {}}]', 14, 1),
+(46, '2023-06-23 06:08:15.061360', '2', 'Preparación', 1, '[{\"added\": {}}]', 14, 1),
+(47, '2023-06-23 06:08:23.912192', '3', 'Reparto', 1, '[{\"added\": {}}]', 14, 1),
+(48, '2023-06-23 06:08:32.814566', '4', 'Entrega', 1, '[{\"added\": {}}]', 14, 1),
+(49, '2023-06-23 06:08:38.456948', '1', 'bob', 1, '[{\"added\": {}}]', 13, 1),
+(50, '2023-06-23 21:24:05.852076', '1', 'bob', 2, '[{\"changed\": {\"fields\": [\"Estado\"]}}]', 13, 1),
+(51, '2023-06-23 21:25:04.247747', '1', 'bob', 2, '[{\"changed\": {\"fields\": [\"Estado\"]}}]', 13, 1),
+(52, '2023-06-23 21:25:16.211113', '1', 'bob', 2, '[{\"changed\": {\"fields\": [\"Estado\"]}}]', 13, 1),
+(53, '2023-06-23 21:28:00.409691', '1', 'bob', 2, '[{\"changed\": {\"fields\": [\"Estado\"]}}]', 13, 1),
+(54, '2023-06-23 21:32:14.038854', '1', 'bob', 2, '[{\"changed\": {\"fields\": [\"Estado\"]}}]', 13, 1),
+(55, '2023-06-23 21:32:33.813200', '1', 'bob', 3, '', 13, 1),
+(56, '2023-06-23 21:33:01.569430', '2', 'lole', 2, '[{\"changed\": {\"fields\": [\"Estado\"]}}]', 13, 1),
+(57, '2023-06-23 22:16:58.139112', '2', 'Identificadores', 1, '[{\"added\": {}}]', 7, 1),
+(58, '2023-06-23 22:17:11.937156', '1', 'Bandana', 2, '[{\"changed\": {\"fields\": [\"NombreTipo\"]}}]', 7, 1),
+(59, '2023-06-23 22:17:23.381336', '2', 'Identificador', 2, '[{\"changed\": {\"fields\": [\"NombreTipo\"]}}]', 7, 1),
+(60, '2023-06-23 22:17:33.014348', '3', 'Correa', 1, '[{\"added\": {}}]', 7, 1),
+(61, '2023-06-23 22:29:16.399693', '8', 'dknakdka', 3, '', 8, 1),
+(62, '2023-06-23 23:08:09.294036', '12', 'cliente2', 1, '[{\"added\": {}}]', 11, 1),
+(63, '2023-06-23 23:08:28.261129', '12', 'cliente2', 2, '[{\"changed\": {\"fields\": [\"Email\"]}}]', 11, 1),
+(64, '2023-06-23 23:09:05.624639', '12', 'cliente2', 3, '', 11, 1),
+(65, '2023-06-23 23:10:22.445837', '13', 'cliente2', 2, '[{\"changed\": {\"fields\": [\"Groups\", \"Email\"]}}]', 11, 1);
 
 -- --------------------------------------------------------
 
@@ -372,18 +541,20 @@ CREATE TABLE `django_content_type` (
 --
 
 INSERT INTO `django_content_type` (`id`, `app_label`, `model`) VALUES
-(2, 'admin', 'logentry'),
-(1, 'admin_interface', 'theme'),
-(4, 'auth', 'group'),
-(3, 'auth', 'permission'),
-(5, 'auth', 'user'),
-(6, 'contenttypes', 'contenttype'),
-(10, 'core', 'cliente'),
-(11, 'core', 'comentario'),
-(9, 'core', 'producto'),
-(12, 'core', 'subscripcion'),
-(8, 'core', 'tipoproducto'),
-(7, 'sessions', 'session');
+(1, 'admin', 'logentry'),
+(3, 'auth', 'group'),
+(2, 'auth', 'permission'),
+(11, 'authentication', 'user'),
+(4, 'contenttypes', 'contenttype'),
+(10, 'core', 'carrito'),
+(6, 'core', 'cliente'),
+(9, 'core', 'comentario'),
+(14, 'core', 'estado'),
+(8, 'core', 'producto'),
+(13, 'core', 'seguimiento'),
+(12, 'core', 'suscripcion'),
+(7, 'core', 'tipoproducto'),
+(5, 'sessions', 'session');
 
 -- --------------------------------------------------------
 
@@ -403,57 +574,31 @@ CREATE TABLE `django_migrations` (
 --
 
 INSERT INTO `django_migrations` (`id`, `app`, `name`, `applied`) VALUES
-(1, 'contenttypes', '0001_initial', '2023-06-06 13:17:55.078366'),
-(2, 'auth', '0001_initial', '2023-06-06 13:17:55.169614'),
-(3, 'admin', '0001_initial', '2023-06-06 13:17:55.465590'),
-(4, 'admin', '0002_logentry_remove_auto_add', '2023-06-06 13:17:55.537498'),
-(5, 'admin', '0003_logentry_add_action_flag_choices', '2023-06-06 13:17:55.546500'),
-(6, 'admin_interface', '0001_initial', '2023-06-06 13:17:55.576121'),
-(7, 'admin_interface', '0002_add_related_modal', '2023-06-06 13:17:55.644868'),
-(8, 'admin_interface', '0003_add_logo_color', '2023-06-06 13:17:55.666873'),
-(9, 'admin_interface', '0004_rename_title_color', '2023-06-06 13:17:55.679600'),
-(10, 'admin_interface', '0005_add_recent_actions_visible', '2023-06-06 13:17:55.701605'),
-(11, 'admin_interface', '0006_bytes_to_str', '2023-06-06 13:17:55.752616'),
-(12, 'admin_interface', '0007_add_favicon', '2023-06-06 13:17:55.803944'),
-(13, 'admin_interface', '0008_change_related_modal_background_opacity_type', '2023-06-06 13:17:55.838308'),
-(14, 'admin_interface', '0009_add_enviroment', '2023-06-06 13:17:55.875624'),
-(15, 'admin_interface', '0010_add_localization', '2023-06-06 13:17:55.891438'),
-(16, 'admin_interface', '0011_add_environment_options', '2023-06-06 13:17:55.952425'),
-(17, 'admin_interface', '0012_update_verbose_names', '2023-06-06 13:17:55.962431'),
-(18, 'admin_interface', '0013_add_related_modal_close_button', '2023-06-06 13:17:55.983437'),
-(19, 'admin_interface', '0014_name_unique', '2023-06-06 13:17:56.000876'),
-(20, 'admin_interface', '0015_add_language_chooser_active', '2023-06-06 13:17:56.022881'),
-(21, 'admin_interface', '0016_add_language_chooser_display', '2023-06-06 13:17:56.044886'),
-(22, 'admin_interface', '0017_change_list_filter_dropdown', '2023-06-06 13:17:56.050888'),
-(23, 'admin_interface', '0018_theme_list_filter_sticky', '2023-06-06 13:17:56.074899'),
-(24, 'admin_interface', '0019_add_form_sticky', '2023-06-06 13:17:56.114402'),
-(25, 'admin_interface', '0020_module_selected_colors', '2023-06-06 13:17:56.158025'),
-(26, 'admin_interface', '0021_file_extension_validator', '2023-06-06 13:17:56.166687'),
-(27, 'admin_interface', '0022_add_logo_max_width_and_height', '2023-06-06 13:17:56.208498'),
-(28, 'admin_interface', '0023_theme_foldable_apps', '2023-06-06 13:17:56.229790'),
-(29, 'admin_interface', '0024_remove_theme_css', '2023-06-06 13:17:56.243792'),
-(30, 'admin_interface', '0025_theme_language_chooser_control', '2023-06-06 13:17:56.265798'),
-(31, 'admin_interface', '0026_theme_list_filter_highlight', '2023-06-06 13:17:56.287803'),
-(32, 'admin_interface', '0027_theme_list_filter_removal_links', '2023-06-06 13:17:56.309808'),
-(33, 'admin_interface', '0028_theme_show_fieldsets_as_tabs_and_more', '2023-06-06 13:17:56.350377'),
-(34, 'admin_interface', '0029_theme_css_generic_link_active_color', '2023-06-06 13:17:56.373383'),
-(35, 'admin_interface', '0030_theme_collapsible_stacked_inlines_and_more', '2023-06-06 13:17:56.449608'),
-(36, 'contenttypes', '0002_remove_content_type_name', '2023-06-06 13:17:56.499669'),
-(37, 'auth', '0002_alter_permission_name_max_length', '2023-06-06 13:17:56.540678'),
-(38, 'auth', '0003_alter_user_email_max_length', '2023-06-06 13:17:56.581688'),
-(39, 'auth', '0004_alter_user_username_opts', '2023-06-06 13:17:56.591690'),
-(40, 'auth', '0005_alter_user_last_login_null', '2023-06-06 13:17:56.622792'),
-(41, 'auth', '0006_require_contenttypes_0002', '2023-06-06 13:17:56.626312'),
-(42, 'auth', '0007_alter_validators_add_error_messages', '2023-06-06 13:17:56.634883'),
-(43, 'auth', '0008_alter_user_username_max_length', '2023-06-06 13:17:56.653888'),
-(44, 'auth', '0009_alter_user_last_name_max_length', '2023-06-06 13:17:56.669120'),
-(45, 'auth', '0010_alter_group_name_max_length', '2023-06-06 13:17:56.713787'),
-(46, 'auth', '0011_update_proxy_permissions', '2023-06-06 13:17:56.724790'),
-(47, 'auth', '0012_alter_user_first_name_max_length', '2023-06-06 13:17:56.749103'),
-(48, 'core', '0001_initial', '2023-06-06 13:17:56.782115'),
-(49, 'core', '0002_cliente_comentario', '2023-06-06 13:17:56.847878'),
-(50, 'core', '0003_subscripcion', '2023-06-06 13:17:56.897913'),
-(51, 'sessions', '0001_initial', '2023-06-06 13:17:56.948743');
+(1, 'contenttypes', '0001_initial', '2023-06-14 00:42:45.560725'),
+(2, 'contenttypes', '0002_remove_content_type_name', '2023-06-14 00:42:45.615799'),
+(3, 'auth', '0001_initial', '2023-06-14 00:42:45.688436'),
+(4, 'auth', '0002_alter_permission_name_max_length', '2023-06-14 00:42:45.844263'),
+(5, 'auth', '0003_alter_user_email_max_length', '2023-06-14 00:42:45.851775'),
+(6, 'auth', '0004_alter_user_username_opts', '2023-06-14 00:42:45.858022'),
+(7, 'auth', '0005_alter_user_last_login_null', '2023-06-14 00:42:45.865841'),
+(8, 'auth', '0006_require_contenttypes_0002', '2023-06-14 00:42:45.870159'),
+(9, 'auth', '0007_alter_validators_add_error_messages', '2023-06-14 00:42:45.876033'),
+(10, 'auth', '0008_alter_user_username_max_length', '2023-06-14 00:42:45.882040'),
+(11, 'auth', '0009_alter_user_last_name_max_length', '2023-06-14 00:42:45.888595'),
+(12, 'auth', '0010_alter_group_name_max_length', '2023-06-14 00:42:45.942065'),
+(13, 'auth', '0011_update_proxy_permissions', '2023-06-14 00:42:45.948698'),
+(14, 'auth', '0012_alter_user_first_name_max_length', '2023-06-14 00:42:45.955701'),
+(15, 'authentication', '0001_initial', '2023-06-14 00:42:46.036945'),
+(16, 'admin', '0001_initial', '2023-06-14 00:42:46.177064'),
+(17, 'admin', '0002_logentry_remove_auto_add', '2023-06-14 00:42:46.254293'),
+(18, 'admin', '0003_logentry_add_action_flag_choices', '2023-06-14 00:42:46.260805'),
+(19, 'core', '0001_initial', '2023-06-14 00:42:46.346049'),
+(20, 'sessions', '0001_initial', '2023-06-14 00:42:46.496741'),
+(21, 'core', '0002_suscripcion', '2023-06-21 17:57:20.065228'),
+(22, 'core', '0003_remove_suscripcion_porcentaje', '2023-06-21 18:28:55.241715'),
+(23, 'core', '0004_delete_suscripcion', '2023-06-21 18:41:05.029395'),
+(24, 'core', '0005_suscripcion', '2023-06-21 18:42:14.291566'),
+(25, 'core', '0006_estado_seguimiento', '2023-06-23 05:48:43.836486');
 
 -- --------------------------------------------------------
 
@@ -472,18 +617,38 @@ CREATE TABLE `django_session` (
 --
 
 INSERT INTO `django_session` (`session_key`, `session_data`, `expire_date`) VALUES
-('mnxf5vs13yxbiosys44qe9cum5j14vu6', '.eJxVjEEOwiAURO_C2hA_SKEu3XuGZuB_pGrapLQr492VpAvdzntvXmrAtpZhq7IMI6uzInX43SLSQ6YG-I7pNus0T-syRt0UvdOqrzPL87K7fwcFtbS6Y2-cERH7jfp8ZAKRsxnZJu-BzGRDxwYsEsg4EpckAD569Cej3h8TTTkT:1q6WpU:TzCgmtwHc6ZxS6E5drGUhwKfisuLs01QWv40tL8M6hM', '2023-06-20 13:34:32.306450');
+('5fxwlflijb5ox0ew852do0ohtt5hg33q', '.eJxVjDEOAiEQRe9CbQgIDGBp7xkIw4yyaiBZdivj3XWTLbT9773_EimvS03r4DlNJE7iKA6_G-by4LYBuud267L0tswTyk2ROx3y0omf5939O6h51G_NxoMlQ8V7BhcigMWrxuwCKixGUyiECNkbjoqD1eBZoXYMpiiHUbw_7M04Cw:1q9F59:56g0zD6Zam28pYnfhfzLyBbF_cTLnkFNrqug4Yvez4A', '2023-06-28 01:13:55.249003'),
+('ck3zj7aeka85ybx84knwgr5o3yq5krcm', '.eJxVjDsOwjAQRO_iGlky_lPScwZrvbvGAWRLcVIh7k4ipYBy5r2Zt0iwLjWtg-c0kbgIJU6_XQZ8ctsBPaDdu8TelnnKclfkQYe8deLX9XD_DiqMuq0NW43aBE_B2hBcJjwXrZWJ2ThXLPqiKXoGQAJii6QDuC0ocNETis8X5xI42Q:1qC6wb:uTp_vgSlb98emYU0lj-ijSXUrBzRLTHu84EU6eibRqA', '2023-07-05 23:08:57.302742'),
+('o7wh1ac06ajnlp0r2vsjjlm74thj336e', '.eJxVjEsOAiEQBe_C2hBapkdw6d4zkIZuZNRAMp-V8e5KMgvdVtV7LxVoW0vYFpnDxOqsANThF0ZKD6nd8J3qrenU6jpPUfdE73bR18byvOzt30GhpXzXjk7JZsvikTMCeBzQpyOwYR4HY8fsWCKgCDmbR9MhDx4BSZLJoN4fDOo4NQ:1qCqIV:Gb9tvB-uIPiw85Oo09IsTN3MAJVULiSux2V2YNRRbxM', '2023-07-07 23:34:35.113703'),
+('wq1pz72cp6hgthd270zpbzzzwgd6dilv', '.eJxVjDsOwjAQRO_iGlky_lPScwZrvbvGAWRLcVIh7k4ipYBy5r2Zt0iwLjWtg-c0kbgIJU6_XQZ8ctsBPaDdu8TelnnKclfkQYe8deLX9XD_DiqMuq0NW43aBE_B2hBcJjwXrZWJ2ThXLPqiKXoGQAJii6QDuC0ocNETis8X5xI42Q:1qCZVG:9prvEct1voSAWuRdNgw8sqyy02vJbAKwobQQ9NB1tiE', '2023-07-07 05:38:38.968123');
 
 --
 -- Índices para tablas volcadas
 --
 
 --
--- Indices de la tabla `admin_interface_theme`
+-- Indices de la tabla `authentication_user`
 --
-ALTER TABLE `admin_interface_theme`
+ALTER TABLE `authentication_user`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `admin_interface_theme_name_30bda70f_uniq` (`name`);
+  ADD UNIQUE KEY `username` (`username`),
+  ADD UNIQUE KEY `email` (`email`);
+
+--
+-- Indices de la tabla `authentication_user_groups`
+--
+ALTER TABLE `authentication_user_groups`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `authentication_user_groups_user_id_group_id_8af031ac_uniq` (`user_id`,`group_id`),
+  ADD KEY `authentication_user_groups_group_id_6b5c44b7_fk_auth_group_id` (`group_id`);
+
+--
+-- Indices de la tabla `authentication_user_user_permissions`
+--
+ALTER TABLE `authentication_user_user_permissions`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `authentication_user_user_user_id_permission_id_ec51b09f_uniq` (`user_id`,`permission_id`),
+  ADD KEY `authentication_user__permission_id_ea6be19a_fk_auth_perm` (`permission_id`);
 
 --
 -- Indices de la tabla `auth_group`
@@ -508,33 +673,19 @@ ALTER TABLE `auth_permission`
   ADD UNIQUE KEY `auth_permission_content_type_id_codename_01ab375a_uniq` (`content_type_id`,`codename`);
 
 --
--- Indices de la tabla `auth_user`
+-- Indices de la tabla `core_carrito`
 --
-ALTER TABLE `auth_user`
+ALTER TABLE `core_carrito`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `username` (`username`);
-
---
--- Indices de la tabla `auth_user_groups`
---
-ALTER TABLE `auth_user_groups`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `auth_user_groups_user_id_group_id_94350c0c_uniq` (`user_id`,`group_id`),
-  ADD KEY `auth_user_groups_group_id_97559544_fk_auth_group_id` (`group_id`);
-
---
--- Indices de la tabla `auth_user_user_permissions`
---
-ALTER TABLE `auth_user_user_permissions`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `auth_user_user_permissions_user_id_permission_id_14a6b632_uniq` (`user_id`,`permission_id`),
-  ADD KEY `auth_user_user_permi_permission_id_1fbb5f2c_fk_auth_perm` (`permission_id`);
+  ADD KEY `core_carrito_cliente_id_8efb49fb_fk_core_cliente_id` (`cliente_id`),
+  ADD KEY `core_carrito_producto_id_f9c36034_fk_core_producto_id` (`producto_id`);
 
 --
 -- Indices de la tabla `core_cliente`
 --
 ALTER TABLE `core_cliente`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `user_id` (`user_id`);
 
 --
 -- Indices de la tabla `core_comentario`
@@ -544,6 +695,12 @@ ALTER TABLE `core_comentario`
   ADD KEY `core_comentario_user_id_e6908839_fk_core_cliente_id` (`user_id`);
 
 --
+-- Indices de la tabla `core_estado`
+--
+ALTER TABLE `core_estado`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indices de la tabla `core_producto`
 --
 ALTER TABLE `core_producto`
@@ -551,11 +708,18 @@ ALTER TABLE `core_producto`
   ADD KEY `core_producto_tipo_id_e0e92ad1_fk_core_tipoproducto_id` (`tipo_id`);
 
 --
--- Indices de la tabla `core_subscripcion`
+-- Indices de la tabla `core_seguimiento`
 --
-ALTER TABLE `core_subscripcion`
+ALTER TABLE `core_seguimiento`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `core_subscripcion_user_id_258b1df8_fk_core_cliente_id` (`user_id`);
+  ADD KEY `core_seguimiento_estado_id_2399bc69_fk_core_estado_id` (`estado_id`);
+
+--
+-- Indices de la tabla `core_suscripcion`
+--
+ALTER TABLE `core_suscripcion`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `core_suscripcion_cliente_id_b012260a_fk_core_cliente_id` (`cliente_id`);
 
 --
 -- Indices de la tabla `core_tipoproducto`
@@ -569,7 +733,7 @@ ALTER TABLE `core_tipoproducto`
 ALTER TABLE `django_admin_log`
   ADD PRIMARY KEY (`id`),
   ADD KEY `django_admin_log_content_type_id_c4bce8eb_fk_django_co` (`content_type_id`),
-  ADD KEY `django_admin_log_user_id_c564eba6_fk_auth_user_id` (`user_id`);
+  ADD KEY `django_admin_log_user_id_c564eba6_fk_authentication_user_id` (`user_id`);
 
 --
 -- Indices de la tabla `django_content_type`
@@ -596,52 +760,52 @@ ALTER TABLE `django_session`
 --
 
 --
--- AUTO_INCREMENT de la tabla `admin_interface_theme`
+-- AUTO_INCREMENT de la tabla `authentication_user`
 --
-ALTER TABLE `admin_interface_theme`
+ALTER TABLE `authentication_user`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+
+--
+-- AUTO_INCREMENT de la tabla `authentication_user_groups`
+--
+ALTER TABLE `authentication_user_groups`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+
+--
+-- AUTO_INCREMENT de la tabla `authentication_user_user_permissions`
+--
+ALTER TABLE `authentication_user_user_permissions`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `auth_group`
 --
 ALTER TABLE `auth_group`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `auth_group_permissions`
 --
 ALTER TABLE `auth_group_permissions`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=133;
 
 --
 -- AUTO_INCREMENT de la tabla `auth_permission`
 --
 ALTER TABLE `auth_permission`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
 
 --
--- AUTO_INCREMENT de la tabla `auth_user`
+-- AUTO_INCREMENT de la tabla `core_carrito`
 --
-ALTER TABLE `auth_user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT de la tabla `auth_user_groups`
---
-ALTER TABLE `auth_user_groups`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT de la tabla `auth_user_user_permissions`
---
-ALTER TABLE `auth_user_user_permissions`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `core_carrito`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=87;
 
 --
 -- AUTO_INCREMENT de la tabla `core_cliente`
 --
 ALTER TABLE `core_cliente`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de la tabla `core_comentario`
@@ -650,16 +814,28 @@ ALTER TABLE `core_comentario`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT de la tabla `core_estado`
+--
+ALTER TABLE `core_estado`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
 -- AUTO_INCREMENT de la tabla `core_producto`
 --
 ALTER TABLE `core_producto`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
--- AUTO_INCREMENT de la tabla `core_subscripcion`
+-- AUTO_INCREMENT de la tabla `core_seguimiento`
 --
-ALTER TABLE `core_subscripcion`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `core_seguimiento`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT de la tabla `core_suscripcion`
+--
+ALTER TABLE `core_suscripcion`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de la tabla `core_tipoproducto`
@@ -671,23 +847,37 @@ ALTER TABLE `core_tipoproducto`
 -- AUTO_INCREMENT de la tabla `django_admin_log`
 --
 ALTER TABLE `django_admin_log`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
 
 --
 -- AUTO_INCREMENT de la tabla `django_content_type`
 --
 ALTER TABLE `django_content_type`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT de la tabla `django_migrations`
 --
 ALTER TABLE `django_migrations`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- Restricciones para tablas volcadas
 --
+
+--
+-- Filtros para la tabla `authentication_user_groups`
+--
+ALTER TABLE `authentication_user_groups`
+  ADD CONSTRAINT `authentication_user__user_id_30868577_fk_authentic` FOREIGN KEY (`user_id`) REFERENCES `authentication_user` (`id`),
+  ADD CONSTRAINT `authentication_user_groups_group_id_6b5c44b7_fk_auth_group_id` FOREIGN KEY (`group_id`) REFERENCES `auth_group` (`id`);
+
+--
+-- Filtros para la tabla `authentication_user_user_permissions`
+--
+ALTER TABLE `authentication_user_user_permissions`
+  ADD CONSTRAINT `authentication_user__permission_id_ea6be19a_fk_auth_perm` FOREIGN KEY (`permission_id`) REFERENCES `auth_permission` (`id`),
+  ADD CONSTRAINT `authentication_user__user_id_736ebf7e_fk_authentic` FOREIGN KEY (`user_id`) REFERENCES `authentication_user` (`id`);
 
 --
 -- Filtros para la tabla `auth_group_permissions`
@@ -703,18 +893,17 @@ ALTER TABLE `auth_permission`
   ADD CONSTRAINT `auth_permission_content_type_id_2f476e4b_fk_django_co` FOREIGN KEY (`content_type_id`) REFERENCES `django_content_type` (`id`);
 
 --
--- Filtros para la tabla `auth_user_groups`
+-- Filtros para la tabla `core_carrito`
 --
-ALTER TABLE `auth_user_groups`
-  ADD CONSTRAINT `auth_user_groups_group_id_97559544_fk_auth_group_id` FOREIGN KEY (`group_id`) REFERENCES `auth_group` (`id`),
-  ADD CONSTRAINT `auth_user_groups_user_id_6a12ed8b_fk_auth_user_id` FOREIGN KEY (`user_id`) REFERENCES `auth_user` (`id`);
+ALTER TABLE `core_carrito`
+  ADD CONSTRAINT `core_carrito_cliente_id_8efb49fb_fk_core_cliente_id` FOREIGN KEY (`cliente_id`) REFERENCES `core_cliente` (`id`),
+  ADD CONSTRAINT `core_carrito_producto_id_f9c36034_fk_core_producto_id` FOREIGN KEY (`producto_id`) REFERENCES `core_producto` (`id`);
 
 --
--- Filtros para la tabla `auth_user_user_permissions`
+-- Filtros para la tabla `core_cliente`
 --
-ALTER TABLE `auth_user_user_permissions`
-  ADD CONSTRAINT `auth_user_user_permi_permission_id_1fbb5f2c_fk_auth_perm` FOREIGN KEY (`permission_id`) REFERENCES `auth_permission` (`id`),
-  ADD CONSTRAINT `auth_user_user_permissions_user_id_a95ead1b_fk_auth_user_id` FOREIGN KEY (`user_id`) REFERENCES `auth_user` (`id`);
+ALTER TABLE `core_cliente`
+  ADD CONSTRAINT `core_cliente_user_id_d7896daf_fk_authentication_user_id` FOREIGN KEY (`user_id`) REFERENCES `authentication_user` (`id`);
 
 --
 -- Filtros para la tabla `core_comentario`
@@ -729,17 +918,23 @@ ALTER TABLE `core_producto`
   ADD CONSTRAINT `core_producto_tipo_id_e0e92ad1_fk_core_tipoproducto_id` FOREIGN KEY (`tipo_id`) REFERENCES `core_tipoproducto` (`id`);
 
 --
--- Filtros para la tabla `core_subscripcion`
+-- Filtros para la tabla `core_seguimiento`
 --
-ALTER TABLE `core_subscripcion`
-  ADD CONSTRAINT `core_subscripcion_user_id_258b1df8_fk_core_cliente_id` FOREIGN KEY (`user_id`) REFERENCES `core_cliente` (`id`);
+ALTER TABLE `core_seguimiento`
+  ADD CONSTRAINT `core_seguimiento_estado_id_2399bc69_fk_core_estado_id` FOREIGN KEY (`estado_id`) REFERENCES `core_estado` (`id`);
+
+--
+-- Filtros para la tabla `core_suscripcion`
+--
+ALTER TABLE `core_suscripcion`
+  ADD CONSTRAINT `core_suscripcion_cliente_id_b012260a_fk_core_cliente_id` FOREIGN KEY (`cliente_id`) REFERENCES `core_cliente` (`id`);
 
 --
 -- Filtros para la tabla `django_admin_log`
 --
 ALTER TABLE `django_admin_log`
   ADD CONSTRAINT `django_admin_log_content_type_id_c4bce8eb_fk_django_co` FOREIGN KEY (`content_type_id`) REFERENCES `django_content_type` (`id`),
-  ADD CONSTRAINT `django_admin_log_user_id_c564eba6_fk_auth_user_id` FOREIGN KEY (`user_id`) REFERENCES `auth_user` (`id`);
+  ADD CONSTRAINT `django_admin_log_user_id_c564eba6_fk_authentication_user_id` FOREIGN KEY (`user_id`) REFERENCES `authentication_user` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
