@@ -24,14 +24,46 @@ class ClienteForm(ModelForm):
 
     class Meta:
         model = Cliente
-        fields = '__all__'  
+        exclude = ('contrasena','user')  
 
 
 
-class SubscripcionForm(ModelForm):
-    correo        = forms.CharField(min_length=3,widget=forms.TextInput(attrs={"placeholder":"Ingrese correo"}))
-    user        = forms.CharField(min_length=3,widget=forms.TextInput(attrs={"placeholder":"Ingrese nombre de usuario"}))
+class CantidadForm (ModelForm):
+    cantidad = forms.IntegerField(min_value=1, max_value=5, widget=forms.NumberInput(attrs={"placeholder":"Ingrese Cantidad"}))
 
     class Meta:
-        model = Subscripcion
-        fields = '__all__'  
+        model = Carrito
+        fields = ['cantidad']
+
+
+class CarritoForm (ModelForm):
+    cliente = forms.CharField()
+    producto = forms.IntegerField
+    cantidad = forms.IntegerField(min_value=1, max_value=5, widget=forms.NumberInput(attrs={"placeholder":"Ingrese Cantidad"}))
+
+    class Meta:
+        model = Carrito
+        fields = ['cantidad']
+
+
+class SuscripcionForm (ModelForm):
+    correo = forms.CharField(min_length=3,widget=forms.TextInput(attrs={"placeholder":"Ingrese su correo"}))
+
+    class Meta:
+        model = Suscripcion
+        fields = ['correo']
+
+class EstadoForm(ModelForm):
+    class Meta:
+        model = Compra
+        fields = ['nombreEstado']
+
+
+
+class envioForm (ModelForm):
+    direccion = forms.CharField(min_length=3,widget=forms.TextInput(attrs={"placeholder":"Ingrese Dirección"}))
+    contacto = forms.CharField(min_length=3,widget=forms.TextInput(attrs={"placeholder":"Ingrese Contacto"}))
+
+    class Meta:
+        model = Compra
+        fields = ['direccion','contacto']

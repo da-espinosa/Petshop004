@@ -20,6 +20,15 @@ class ProductoSerializers(serializers.ModelSerializer):
         fields = '__all__'
 
 
+class EstadoSerializers(serializers.ModelSerializer):
+    class Meta:
+        model = Estado
+        fields = '__all__'
 
+
+class CompraSerializers(serializers.ModelSerializer):
+    class Meta:
+        model = Compra
+        fields = '__all__'
 
 # SERIEALIZER - VIEWSET - URL

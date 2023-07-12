@@ -1,7 +1,8 @@
 from django.db import models
+from django.contrib.auth.models import User
+import uuid
+# Create your models here.
 
-
-#fecha = models.DateField
 
 class TipoProducto(models.Model):
   nombreTipo  = models.CharField(max_length=30);
@@ -21,15 +22,15 @@ class Producto(models.Model):
   def __str__(self):
     return self.nombre
 
+
+
 class Cliente(models.Model):
-  user       = models.CharField(max_length=30)
-  contrasena = models.CharField(max_length=20)
   nombre     = models.CharField(max_length=40)
   apellido = models.CharField(max_length=40)
-
+  user = models.OneToOneField('authentication.User', on_delete = models.CASCADE, verbose_name = 'Usuario', null=True)
 
   def __str__(self):
-    return self.user
+    return self.nombre
 
 class Comentario(models.Model):
   resena      = models.CharField(max_length=60)
@@ -42,14 +43,38 @@ class Comentario(models.Model):
 class Carrito(models.Model):
   cliente    = models.ForeignKey(Cliente, on_delete=models.CASCADE) 
   producto    = models.ForeignKey(Producto, on_delete=models.CASCADE) 
+  cantidad    = models.IntegerField()
+  vigente = models.BooleanField()
 
   def __str__(self):
-    return self.cliente.user
+    return self.cliente.user.username
 
 
-class Subscripcion(models.Model):
-  correo         = models.CharField(max_length=60)
-  cliente        = models.ForeignKey(Cliente, on_delete=models.CASCADE) 
+class Suscripcion(models.Model):
+    cliente     = models.ForeignKey(Cliente, on_delete=models.CASCADE)
+    correo      = models.CharField(max_length=60)
+    fecha       = models.DateField()
+
+    def __str__(self):
+        return self.cliente.user.username
+
+
+class Estado(models.Model):
+  nombreEstado  = models.CharField(max_length=50);
 
   def __str__(self):
-    return self.cliente.user
+    return self.nombreEstado
+  
+
+
+class Compra(models.Model):
+    codigo = models.CharField(max_length=20)
+    cliente = models.ForeignKey(Cliente, on_delete=models.CASCADE)
+    carrito = models.ForeignKey(Carrito, on_delete=models.CASCADE)
+    direccion = models.CharField(max_length=50)
+    contacto = models.CharField(max_length=50)
+    fecha = models.DateField()
+    nombreEstado = models.ForeignKey(Estado, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.codigo
