@@ -1,0 +1,138 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block css %}
+  
+{% endblock %}
+
+{% block contenido %}
+<!-- Section: Design Block -->
+
+<!--copiar y pegar mismo codigo que de la pagina addProducto (todo el codigo)-->
+
+<section class="">
+    <!-- Jumbotron -->
+    <div class="px-4 py-5 px-md-5 text-center text-lg-start" style="background-color: hsl(0, 0%, 96%)">
+      <div class="container">
+        <div class="row gx-lg-5 align-items-center">
+          <div class="col-lg-6 mb-5 mb-lg-0">
+            <img src="https://cdn2.iconfinder.com/data/icons/love-around-2/512/pet-cat-dog-animal-veterinary-512.png" class="img-fluid" style="width: 150px;" alt="Generic placeholder image">
+            <h1 class="my-5 display-3 fw-bold ls-tight">
+              Suscríbete <br />
+              <span class="text-primary">y obtén un 5% de descuento</span>
+            </h1>
+            <p style="color: hsl(217, 10%, 50.8%)">
+              Cada suscripción nos impulsa a continuar construyendo un futuro mejor para los peludos amigos que tanto necesitan de nuestra ayuda. 
+              Tu compromiso y generosidad nos inspiran a esforzarnos aún más, 
+              buscando nuevas formas de mejorar sus vidas y brindarles el amor y cuidado que se merecen.
+            </p>
+          </div>
+  
+          <div class="col-lg-6 mb-5 mb-lg-0">
+            <div class="card">
+              <div class="card-body py-5 px-md-5">
+                <h4 class="my-5 display-6 fw-bold ls-tight">
+                  ¡Suscribete ahora! <br />
+                  <span class="text-primary">Por solo 5 dólares</span>
+                </h4>
+                <form action="" method="POST" name="form" id="form">
+                  {% csrf_token %} 
+
+                  <div class="form-outline mb-4">
+                    {{form | crispy}}
+                    <input type="submit" style="visibility: hidden;" value="submit">
+                  </div>
+                
+
+                  <div class="form-check d-flex justify-content-center mb-4">
+                    <input class="form-check-input me-2" type="checkbox" value="" id="form2Example33" checked />
+                    <label class="form-check-label" for="form2Example33">
+                      Acepto términos y condiciones
+                    </label>
+                  </div>
+                
+                  <!-- Submit button -->
+                  <p><div id="btnPaypal"></div></p>
+                  <a href="{% url 'index' %}"><i class="fas fa-angle-left me-2"></i>Volver</a>
+                </form>
+                
+                
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Jumbotron -->
+  </section>
+  <!-- Section: Design Block -->
+{% endblock %}
+
+{% block js %}
+<script src="https://www.paypalobjects.com/api/checkout.js"></script>
+<script>
+  paypal.Button.render({
+    env: 'sandbox',
+    client: {
+      sandbox: 'AWxcFSteZoE4RLubhmmExCLuJVVXe-PTyEClMpYREf8OzeGX0dPRnSNpx0gP1uR2CvP6rWMlBGKn4vAj',
+      production: 'demo_production_client_id'
+    },
+    locale: 'es_CL',
+    style: {
+      size: 'large',
+      color: 'gold',
+      shape: 'rect'
+    },
+    commit: true,
+    payment: function (data, actions) {
+      return actions.payment.create({
+        transactions: [{
+          amount: {
+            total: '{{ 5 }}',
+            currency: 'USD'
+          }
+        }]
+      });
+    },
+    onAuthorize: function (data, actions) {
+      return actions.payment.execute().then(function () {
+        Swal.fire({
+          title: 'Confirmación',
+          text: 'Pago realizado correctamente!',
+          icon: 'success',
+          showCancelButton: false,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'Confirmar'
+        }).then(function() {
+          document.getElementById("form").submit();
+        });
+      });
+    },
+    onCancel(data) {
+      Swal.fire({
+        title: 'Cancelado',
+        text: 'Transacción cancelada!',
+        icon: 'error',
+        showCancelButton: false,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Confirmar'
+      });
+    },
+    onError(err) {
+      Swal.fire({
+        title: 'Error',
+        text: 'Ha ocurrido un error con el pago',
+        icon: 'error',
+        showCancelButton: false,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Confirmar'
+      });
+    }
+  }, '#btnPaypal');
+</script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+{% endblock %}

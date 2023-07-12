@@ -1,0 +1,38 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block contenido %}
+    <div class="container">
+        <div class="row">
+          <div class="col">
+            <div class="col-lg-12 mb-5 mb-lg-0 text-center">
+                <h1 class="my-5 display-4">
+                  Su perfil de <br />
+                  <span class="text-primary">Suscripción</span>
+                </h1>
+              </div>
+          </div>
+          <div class="col">
+            <div class="card my-5">
+                {% for suscripcion in listado %}
+                <div class="card-body">
+                  <h5 class="card-title">Su suscripción</h5>
+                  <p class="card-text">Fecha de expiración: {{suscripcion.fecha}}</p>
+                  <div class="d-flex mb-1" style="max-width: 300px">
+                    <button type="button" class="btn btn-primary btn-sm me-1 mb-2" data-mdb-toggle="tooltip" title="Remove item">
+                        <a onclick="deleteSuscripcion('{{ suscripcion.id }}')" class="btn btn-primary">Anular Suscripcion</a>
+                    </button>
+                </div>
+                </div>
+                {% endfor %}
+            </div>
+          </div>
+        </div>
+      </div>
+      
+
+{% endblock %}
+{% block js %}
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="{% static 'core/js/suscripcion.js' %}"></script>
+{% endblock %}

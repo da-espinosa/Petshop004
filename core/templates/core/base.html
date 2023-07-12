@@ -101,14 +101,23 @@
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6">
+                    {% if user.cliente.suscripcion_set.exists %}
                     <h5 class="text-uppercase border-start border-5 border-primary ps-3 mb-4">Suscripción</h5>
-                    <form action="">
-                        <div class="input-group">
-                            <input type="text" class="form-control p-3" placeholder="Your Email">
-                            <a href="{% url 'subscripcion'%}"><i class="fas fa-angle-left me-2"></i>Suscríbete</a>
+                    
+                        <form action="">
+                            <div class="input-group">
+                                <a href="{% url 'adminSuscripcion'%}"><i class="fas fa-angle-left me-2"></i>Mi suscripción</a>
+                                
+                            </div>
+
+                    {% elif user.is_authenticated %}   
+                            <div class="input-group">
+                                <a href="{% url 'suscripcion'%}"><i class="fas fa-angle-left me-2"></i>Suscríbete</a>
+                                
+                            </div>
                             
-                        </div>
-                    </form>
+                        </form>
+                    {% endif %}
                     <h6 class="text-uppercase mt-4 mb-3">Redes sociales</h6>
                     <div class="d-flex">
                         <a class="btn btn-outline-primary btn-square me-2" href="#"><i class="bi bi-twitter"></i></a>
@@ -141,7 +150,7 @@
         </div>
     </div>
     <!-- FINAL FOOTER -->
-
+    
 
     <!-- VOLVER AL TOP-->
     <a href="#" class="btn btn-primary py-3 fs-4 back-to-top"><i class="bi bi-arrow-up"></i></a>
@@ -156,8 +165,12 @@
    
     <script src="{% static 'core/js/main.js' %}"></script>
 
-    {% block js %}
 
-    {% endblock js %}
+
+    
+
+{% block js %}
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+{% endblock js %}
     </body>
 </html>
