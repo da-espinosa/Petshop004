@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 24-06-2023 a las 01:50:48
+-- Tiempo de generación: 12-07-2023 a las 06:05:36
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -48,12 +48,13 @@ CREATE TABLE `authentication_user` (
 --
 
 INSERT INTO `authentication_user` (`id`, `password`, `last_login`, `is_superuser`, `username`, `email`, `first_name`, `last_name`, `is_active`, `is_staff`, `date_joined`) VALUES
-(1, 'pbkdf2_sha256$216000$yvjlF1Y9U4ni$2K+OXM/UU9+Kr9pHBMa3A0KJpfLbCOZ3yUz+Uprkfd4=', '2023-06-23 23:34:04.007927', 1, 'admin', 'da.espinosa@duocuc.cl', 'admin', 'admin', 1, 1, '2023-06-14 00:44:11.698477'),
+(1, 'pbkdf2_sha256$216000$yvjlF1Y9U4ni$2K+OXM/UU9+Kr9pHBMa3A0KJpfLbCOZ3yUz+Uprkfd4=', '2023-07-12 04:00:30.142506', 1, 'admin', 'da.espinosa@duocuc.cl', 'admin', 'admin', 1, 1, '2023-06-14 00:44:11.698477'),
 (2, 'pbkdf2_sha256$216000$8plPymjFJYQH$yaEaT+fTqFOQpeXMr1BP1XEqkglt7apGrDNzPNBuw8c=', '2023-06-22 23:32:02.000000', 0, 'deivid', 'espinosadavidalexander@duocuc.cl', NULL, NULL, 1, 0, '2023-06-14 00:45:26.640879'),
-(9, 'pbkdf2_sha256$216000$smTDmJKeoViv$8611t/9mqySbotaaI+WJ871EdTRtopfO9TOs8gi34MA=', '2023-06-23 23:33:45.976119', 0, 'vendedor', 'vendedor123@gmail.com', NULL, NULL, 1, 0, '2023-06-22 23:34:59.650973'),
-(10, 'pbkdf2_sha256$216000$hKgEXzu3bXTe$KbPzbO5715QJN0ZRn5hPIvOVEDSrlkcAJSmT/OAcmqM=', '2023-06-23 23:32:54.774086', 0, 'bigboss', 'bigboss@gmail.com', NULL, NULL, 1, 0, '2023-06-22 23:42:59.846119'),
-(11, 'pbkdf2_sha256$216000$2wACsB3kEqXj$OcxnZ/qSCklVV5IiNEHxtxoCBPnphjfV3bK4NpawOPM=', '2023-06-23 23:34:35.110519', 0, 'cliente', 'cliente@gmail.com', NULL, NULL, 1, 0, '2023-06-22 23:43:45.645783'),
-(13, 'pbkdf2_sha256$216000$hjKSAJaCut0G$007Q8TAY6S2EustEFNcyJXIZl7aztH3oR+oJABVym4U=', '2023-06-23 23:10:41.629405', 0, 'cliente2', 'cliente2@gmail.com', NULL, NULL, 1, 0, '2023-06-23 23:09:59.420043');
+(9, 'pbkdf2_sha256$216000$smTDmJKeoViv$8611t/9mqySbotaaI+WJ871EdTRtopfO9TOs8gi34MA=', '2023-07-11 20:48:05.667060', 0, 'vendedor', 'vendedor123@gmail.com', NULL, NULL, 1, 0, '2023-06-22 23:34:59.650973'),
+(10, 'pbkdf2_sha256$216000$hKgEXzu3bXTe$KbPzbO5715QJN0ZRn5hPIvOVEDSrlkcAJSmT/OAcmqM=', '2023-07-12 03:28:11.690513', 0, 'bigboss', 'bigboss@gmail.com', NULL, NULL, 1, 0, '2023-06-22 23:42:59.846119'),
+(11, 'pbkdf2_sha256$216000$2wACsB3kEqXj$OcxnZ/qSCklVV5IiNEHxtxoCBPnphjfV3bK4NpawOPM=', '2023-07-12 03:50:56.095453', 0, 'cliente', 'cliente@gmail.com', NULL, NULL, 1, 0, '2023-06-22 23:43:45.645783'),
+(13, 'pbkdf2_sha256$216000$hjKSAJaCut0G$007Q8TAY6S2EustEFNcyJXIZl7aztH3oR+oJABVym4U=', '2023-07-12 03:48:18.267630', 0, 'cliente2', 'cliente2@gmail.com', NULL, NULL, 1, 0, '2023-06-23 23:09:59.420043'),
+(23, 'pbkdf2_sha256$216000$bgoKMec500vb$J1VXgBFdDMu85No4H2dcoA+sgIKh3xNBV87ZYrYa6jw=', '2023-07-07 07:04:00.427196', 0, 'pailita', NULL, NULL, NULL, 1, 0, '2023-07-03 20:59:33.485468');
 
 -- --------------------------------------------------------
 
@@ -79,7 +80,8 @@ INSERT INTO `authentication_user_groups` (`id`, `user_id`, `group_id`) VALUES
 (11, 9, 3),
 (13, 10, 5),
 (14, 11, 4),
-(16, 13, 4);
+(16, 13, 4),
+(18, 23, 4);
 
 -- --------------------------------------------------------
 
@@ -268,7 +270,11 @@ INSERT INTO `auth_permission` (`id`, `name`, `content_type_id`, `codename`) VALU
 (53, 'Can add estado', 14, 'add_estado'),
 (54, 'Can change estado', 14, 'change_estado'),
 (55, 'Can delete estado', 14, 'delete_estado'),
-(56, 'Can view estado', 14, 'view_estado');
+(56, 'Can view estado', 14, 'view_estado'),
+(57, 'Can add compra', 15, 'add_compra'),
+(58, 'Can change compra', 15, 'change_compra'),
+(59, 'Can delete compra', 15, 'delete_compra'),
+(60, 'Can view compra', 15, 'view_compra');
 
 -- --------------------------------------------------------
 
@@ -279,20 +285,10 @@ INSERT INTO `auth_permission` (`id`, `name`, `content_type_id`, `codename`) VALU
 CREATE TABLE `core_carrito` (
   `id` int(11) NOT NULL,
   `cantidad` int(11) NOT NULL,
+  `vigente` tinyint(1) NOT NULL,
   `cliente_id` int(11) NOT NULL,
   `producto_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
-
---
--- Volcado de datos para la tabla `core_carrito`
---
-
-INSERT INTO `core_carrito` (`id`, `cantidad`, `cliente_id`, `producto_id`) VALUES
-(16, 5, 1, 1),
-(17, 5, 1, 2),
-(83, 2, 6, 1),
-(85, 10, 7, 2),
-(86, 6, 6, 2);
 
 -- --------------------------------------------------------
 
@@ -316,7 +312,8 @@ INSERT INTO `core_cliente` (`id`, `nombre`, `apellido`, `user_id`) VALUES
 (4, 'homero', 'simpson', 9),
 (5, 'rodrigo', 'neres', 10),
 (6, 'kylian', 'mbappe', 11),
-(7, 'Brianeitor', 'perez', 13);
+(7, 'Brianeitor', 'perez', 13),
+(14, 'Carlos', 'pailachenco', 23);
 
 -- --------------------------------------------------------
 
@@ -328,6 +325,23 @@ CREATE TABLE `core_comentario` (
   `id` int(11) NOT NULL,
   `resena` varchar(60) NOT NULL,
   `user_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `core_compra`
+--
+
+CREATE TABLE `core_compra` (
+  `id` int(11) NOT NULL,
+  `codigo` varchar(20) NOT NULL,
+  `direccion` varchar(50) NOT NULL,
+  `contacto` varchar(50) NOT NULL,
+  `fecha` date NOT NULL,
+  `carrito_id` int(11) NOT NULL,
+  `cliente_id` int(11) NOT NULL,
+  `nombreEstado_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
@@ -346,10 +360,10 @@ CREATE TABLE `core_estado` (
 --
 
 INSERT INTO `core_estado` (`id`, `nombreEstado`) VALUES
-(1, 'Validación'),
 (2, 'Preparación'),
 (3, 'Reparto'),
-(4, 'Entrega');
+(4, 'Entregado'),
+(5, 'validación');
 
 -- --------------------------------------------------------
 
@@ -372,29 +386,18 @@ CREATE TABLE `core_producto` (
 --
 
 INSERT INTO `core_producto` (`id`, `nombre`, `descripcion`, `precio`, `stock`, `imagen`, `tipo_id`) VALUES
-(1, 'Bandana con diseño', 'Bandana con diseño perfecto para tu mascota.', 2670, 103, 'products-dog_bandana_front__RHuQ3Kc.png', 1),
-(2, 'Bandana negra', 'Es una bandana negra de tela suave.', 2888, 30, '8309790cd3a52443bb85ddb20d6bd707_7qNhRYs.png', 1),
-(4, 'Bandana con diseño', 'La bandana funciona como collar también.', 3450, 0, 'collar-para-perros-con-bandana-rosa-l.jpg', 1),
-(9, 'Identificador negro', 'Identificador para tu mascota.', 6480, 799, 'identificador_sS2PYJX.png', 2);
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `core_seguimiento`
---
-
-CREATE TABLE `core_seguimiento` (
-  `id` int(11) NOT NULL,
-  `nombre` varchar(30) NOT NULL,
-  `estado_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
-
---
--- Volcado de datos para la tabla `core_seguimiento`
---
-
-INSERT INTO `core_seguimiento` (`id`, `nombre`, `estado_id`) VALUES
-(2, 'lole', 1);
+(1, 'Bandana con diseño', 'Bandana con diseño perfecto para tu mascota.', 1000, 83, 'products-dog_bandana_front__RHuQ3Kc.png', 1),
+(2, 'Bandana negra', 'Es una bandana negra de tela suave.', 2888, 3, '8309790cd3a52443bb85ddb20d6bd707_7qNhRYs.png', 1),
+(9, 'Identificador negro', 'Identificador para tu mascota.', 6480, 777, 'identificador_sS2PYJX.png', 2),
+(10, 'Bandana Tropical', 'Bandana con un diseño de verano', 1990, 50, 'bandana_amazonas_cNcl0x8.png', 1),
+(11, 'Identificador rosa', 'Identificación de acero inoxidable', 1590, 100, '96dfbdc87c282fde3ac332e76b309790.png', 2),
+(12, 'Correa morada', 'correa de genero', 4990, 80, 'R.png', 3),
+(13, 'Identificador naranja', 'Identificador naranja de acero inoxidable', 1990, 100, 'id-bricka-katt-orange-1.png', 2),
+(15, 'Correa Verde', 'Correa de cuero', 6990, 50, 'correa-verde.png', 3),
+(16, 'Correa Bersase Gold and Black', 'Correa Bersace 100% real no fake', 250000, 0, 'Correa_Versace.png', 3),
+(17, 'Bandana Azul Básica', 'Bandana de polar', 2990, 150, '38-382543_blue-bandana-png-scarf.png', 1),
+(19, 'Bandana Bersase', 'Bandana 100$ real', 185000, 0, 'Bandana_Versace.png', 1),
+(20, 'Arnés Bersase Pink', 'Arnés con precio razonable', 8630, 58, 'Arnés_versace.png', 3);
 
 -- --------------------------------------------------------
 
@@ -405,16 +408,9 @@ INSERT INTO `core_seguimiento` (`id`, `nombre`, `estado_id`) VALUES
 CREATE TABLE `core_suscripcion` (
   `id` int(11) NOT NULL,
   `correo` varchar(60) NOT NULL,
+  `fecha` date NOT NULL,
   `cliente_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
-
---
--- Volcado de datos para la tabla `core_suscripcion`
---
-
-INSERT INTO `core_suscripcion` (`id`, `correo`, `cliente_id`) VALUES
-(5, 'da.espinosa@duocuc.cl', 1),
-(6, 'cliente2@gmail.com', 7);
 
 -- --------------------------------------------------------
 
@@ -522,7 +518,89 @@ INSERT INTO `django_admin_log` (`id`, `action_time`, `object_id`, `object_repr`,
 (62, '2023-06-23 23:08:09.294036', '12', 'cliente2', 1, '[{\"added\": {}}]', 11, 1),
 (63, '2023-06-23 23:08:28.261129', '12', 'cliente2', 2, '[{\"changed\": {\"fields\": [\"Email\"]}}]', 11, 1),
 (64, '2023-06-23 23:09:05.624639', '12', 'cliente2', 3, '', 11, 1),
-(65, '2023-06-23 23:10:22.445837', '13', 'cliente2', 2, '[{\"changed\": {\"fields\": [\"Groups\", \"Email\"]}}]', 11, 1);
+(65, '2023-06-23 23:10:22.445837', '13', 'cliente2', 2, '[{\"changed\": {\"fields\": [\"Groups\", \"Email\"]}}]', 11, 1),
+(66, '2023-07-03 20:42:36.084083', '16', 'panchito', 3, '', 11, 1),
+(67, '2023-07-03 20:42:48.580964', '14', 'pancho', 3, '', 11, 1),
+(68, '2023-07-03 20:54:14.441293', '20', 'pet', 3, '', 11, 1),
+(69, '2023-07-03 20:54:19.885010', '21', 'gato', 3, '', 11, 1),
+(70, '2023-07-03 20:54:25.553745', '18', 'lol', 3, '', 11, 1),
+(71, '2023-07-03 20:59:01.645038', '22', 'pailita', 3, '', 11, 1),
+(72, '2023-07-04 00:31:19.796942', '1', '123', 1, '[{\"added\": {}}]', 15, 1),
+(73, '2023-07-04 02:47:18.046802', '91', 'cliente', 3, '', 10, 1),
+(74, '2023-07-04 18:07:34.189307', '94', 'cliente', 3, '', 10, 1),
+(75, '2023-07-04 20:15:47.573012', '95', 'cliente', 3, '', 10, 1),
+(76, '2023-07-04 20:16:11.119076', '96', 'cliente2', 3, '', 10, 1),
+(77, '2023-07-04 20:32:41.800004', '98', 'cliente2', 3, '', 10, 1),
+(78, '2023-07-04 23:17:39.978735', '1', 'cliente', 3, '', 12, 1),
+(79, '2023-07-04 23:20:50.115464', '2', 'cliente', 3, '', 12, 1),
+(80, '2023-07-06 21:29:48.164429', '3', 'cliente', 3, '', 12, 1),
+(81, '2023-07-06 21:43:14.940340', '4', 'cliente', 3, '', 12, 1),
+(82, '2023-07-06 22:48:49.894096', '5', 'cliente', 3, '', 12, 1),
+(83, '2023-07-07 02:16:30.201229', '1', 'cliente', 3, '', 12, 1),
+(84, '2023-07-07 02:32:43.923624', '4', 'cliente', 3, '', 12, 1),
+(85, '2023-07-07 02:32:48.638534', '3', 'cliente', 3, '', 12, 1),
+(86, '2023-07-07 02:32:54.175879', '2', 'cliente', 3, '', 12, 1),
+(87, '2023-07-07 02:44:25.768456', '5', 'cliente', 3, '', 12, 1),
+(88, '2023-07-07 02:53:56.853961', '6', 'cliente', 3, '', 12, 1),
+(89, '2023-07-07 03:08:24.028800', '7', 'cliente', 3, '', 12, 1),
+(90, '2023-07-07 06:04:55.320519', '1', '59d32', 3, '', 15, 1),
+(91, '2023-07-07 06:05:00.037765', '2', '2198a', 3, '', 15, 1),
+(92, '2023-07-07 06:08:23.616383', '3', '66545', 3, '', 15, 1),
+(93, '2023-07-07 06:08:38.948892', '1', 'cliente', 3, '', 12, 1),
+(94, '2023-07-07 06:31:52.451314', '7', '64d7e', 3, '', 15, 1),
+(95, '2023-07-07 06:32:34.705416', '7', 'cliente', 3, '', 10, 1),
+(96, '2023-07-07 06:35:27.485168', '25', 'validación', 3, '', 14, 1),
+(97, '2023-07-07 06:35:31.508578', '24', 'validación', 3, '', 14, 1),
+(98, '2023-07-07 06:35:36.061746', '23', 'validación', 3, '', 14, 1),
+(99, '2023-07-07 06:35:40.159941', '22', 'validación', 3, '', 14, 1),
+(100, '2023-07-07 06:35:43.883771', '21', 'validación', 3, '', 14, 1),
+(101, '2023-07-07 06:35:47.647357', '20', 'validación', 3, '', 14, 1),
+(102, '2023-07-07 06:35:52.078276', '19', 'validación', 3, '', 14, 1),
+(103, '2023-07-07 06:35:56.143318', '18', 'validación', 3, '', 14, 1),
+(104, '2023-07-07 06:36:00.200361', '16', 'validación', 3, '', 14, 1),
+(105, '2023-07-07 06:36:03.946029', '17', 'validación', 3, '', 14, 1),
+(106, '2023-07-07 06:36:08.497033', '15', 'validación', 3, '', 14, 1),
+(107, '2023-07-07 06:36:12.070233', '14', 'validación', 3, '', 14, 1),
+(108, '2023-07-07 06:36:16.435489', '13', 'validación', 3, '', 14, 1),
+(109, '2023-07-07 06:36:20.034693', '12', 'validación', 3, '', 14, 1),
+(110, '2023-07-07 06:36:24.218015', '11', 'validación', 3, '', 14, 1),
+(111, '2023-07-07 06:36:27.908003', '10', 'validación', 3, '', 14, 1),
+(112, '2023-07-07 06:36:32.506426', '9', 'validación', 3, '', 14, 1),
+(113, '2023-07-07 06:36:36.474940', '8', 'validación', 3, '', 14, 1),
+(114, '2023-07-07 06:36:40.566237', '7', 'validación', 3, '', 14, 1),
+(115, '2023-07-07 06:36:46.181823', '6', 'validación', 3, '', 14, 1),
+(116, '2023-07-07 06:36:54.395678', '1', 'Validación', 3, '', 14, 1),
+(117, '2023-07-07 06:58:21.556428', '27', 'validación', 3, '', 14, 1),
+(118, '2023-07-07 06:58:26.150299', '26', 'validación', 3, '', 14, 1),
+(119, '2023-07-11 21:45:08.231383', '13', '6ab98', 3, '', 15, 1),
+(120, '2023-07-11 21:45:12.555733', '12', '6ab98', 3, '', 15, 1),
+(121, '2023-07-11 21:45:16.218856', '11', '6ab98', 3, '', 15, 1),
+(122, '2023-07-11 21:53:02.677319', '14', 'cliente', 3, '', 10, 1),
+(123, '2023-07-11 22:50:48.917343', '2', 'Preparación', 1, '[{\"added\": {}}]', 14, 1),
+(124, '2023-07-11 22:51:01.149442', '3', 'Reparto', 1, '[{\"added\": {}}]', 14, 1),
+(125, '2023-07-11 22:51:12.466685', '4', 'Entregado', 1, '[{\"added\": {}}]', 14, 1),
+(126, '2023-07-11 23:03:48.672880', '1', 'c1578', 3, '', 15, 1),
+(127, '2023-07-11 23:03:54.449760', '1', 'cliente', 3, '', 10, 1),
+(128, '2023-07-11 23:11:26.060069', '6', 'cliente2', 3, '', 10, 1),
+(129, '2023-07-11 23:11:29.999647', '2', 'cliente', 3, '', 10, 1),
+(130, '2023-07-12 02:44:49.442198', '7', '7c7e5', 3, '', 15, 1),
+(131, '2023-07-12 02:44:53.289172', '6', '7c7e5', 3, '', 15, 1),
+(132, '2023-07-12 02:44:57.222538', '5', '9975c', 3, '', 15, 1),
+(133, '2023-07-12 02:45:00.974580', '4', '8072a', 3, '', 15, 1),
+(134, '2023-07-12 03:24:57.123561', '10', 'bigboss', 2, '[]', 11, 1),
+(135, '2023-07-12 03:47:46.449118', '8', '429b3', 3, '', 15, 1),
+(136, '2023-07-12 03:48:50.953385', '19', 'cliente', 3, '', 10, 1),
+(137, '2023-07-12 03:48:54.820148', '11', 'cliente2', 3, '', 10, 1),
+(138, '2023-07-12 03:48:59.122468', '10', 'cliente2', 3, '', 10, 1),
+(139, '2023-07-12 03:49:02.780277', '9', 'cliente2', 3, '', 10, 1),
+(140, '2023-07-12 03:49:06.270100', '7', 'cliente2', 3, '', 10, 1),
+(141, '2023-07-12 03:49:17.218988', '11', 'validación', 3, '', 14, 1),
+(142, '2023-07-12 03:49:20.920002', '10', 'validación', 3, '', 14, 1),
+(143, '2023-07-12 03:49:25.100752', '9', 'validación', 3, '', 14, 1),
+(144, '2023-07-12 03:49:29.037732', '8', 'validación', 3, '', 14, 1),
+(145, '2023-07-12 03:49:33.205470', '7', 'validación', 3, '', 14, 1),
+(146, '2023-07-12 03:49:36.687423', '6', 'validación', 3, '', 14, 1),
+(147, '2023-07-12 03:49:45.185461', '1', 'validación', 3, '', 14, 1);
 
 -- --------------------------------------------------------
 
@@ -549,6 +627,7 @@ INSERT INTO `django_content_type` (`id`, `app_label`, `model`) VALUES
 (10, 'core', 'carrito'),
 (6, 'core', 'cliente'),
 (9, 'core', 'comentario'),
+(15, 'core', 'compra'),
 (14, 'core', 'estado'),
 (8, 'core', 'producto'),
 (13, 'core', 'seguimiento'),
@@ -598,7 +677,23 @@ INSERT INTO `django_migrations` (`id`, `app`, `name`, `applied`) VALUES
 (22, 'core', '0003_remove_suscripcion_porcentaje', '2023-06-21 18:28:55.241715'),
 (23, 'core', '0004_delete_suscripcion', '2023-06-21 18:41:05.029395'),
 (24, 'core', '0005_suscripcion', '2023-06-21 18:42:14.291566'),
-(25, 'core', '0006_estado_seguimiento', '2023-06-23 05:48:43.836486');
+(25, 'core', '0006_estado_seguimiento', '2023-06-23 05:48:43.836486'),
+(26, 'core', '0007_compra', '2023-07-03 23:29:11.779240'),
+(27, 'core', '0008_delete_seguimiento', '2023-07-04 18:36:19.075825'),
+(28, 'core', '0009_delete_suscripcion', '2023-07-04 21:48:02.091940'),
+(29, 'core', '0010_suscripcion', '2023-07-04 21:51:07.066214'),
+(30, 'core', '0011_remove_suscripcion_monto', '2023-07-07 00:04:01.588888'),
+(31, 'core', '0012_delete_suscripcion', '2023-07-07 00:44:17.158913'),
+(32, 'core', '0013_suscripcion', '2023-07-07 00:45:09.016840'),
+(33, 'core', '0014_remove_suscripcion_monto', '2023-07-07 01:14:10.604838'),
+(34, 'core', '0015_delete_suscripcion', '2023-07-07 02:03:55.927275'),
+(35, 'core', '0016_suscripcion', '2023-07-07 02:04:34.004432'),
+(36, 'core', '0017_auto_20230707_0106', '2023-07-07 05:24:15.570895'),
+(37, 'core', '0018_auto_20230707_0138', '2023-07-07 05:39:09.111745'),
+(38, 'core', '0019_suscripcion', '2023-07-07 05:40:07.640132'),
+(39, 'core', '0020_compra', '2023-07-07 05:40:56.497583'),
+(40, 'core', '0021_auto_20230711_1832', '2023-07-11 22:32:13.308765'),
+(41, 'core', '0022_carrito_comentario_compra_estado_suscripcion', '2023-07-11 22:36:58.654872');
 
 -- --------------------------------------------------------
 
@@ -619,8 +714,10 @@ CREATE TABLE `django_session` (
 INSERT INTO `django_session` (`session_key`, `session_data`, `expire_date`) VALUES
 ('5fxwlflijb5ox0ew852do0ohtt5hg33q', '.eJxVjDEOAiEQRe9CbQgIDGBp7xkIw4yyaiBZdivj3XWTLbT9773_EimvS03r4DlNJE7iKA6_G-by4LYBuud267L0tswTyk2ROx3y0omf5939O6h51G_NxoMlQ8V7BhcigMWrxuwCKixGUyiECNkbjoqD1eBZoXYMpiiHUbw_7M04Cw:1q9F59:56g0zD6Zam28pYnfhfzLyBbF_cTLnkFNrqug4Yvez4A', '2023-06-28 01:13:55.249003'),
 ('ck3zj7aeka85ybx84knwgr5o3yq5krcm', '.eJxVjDsOwjAQRO_iGlky_lPScwZrvbvGAWRLcVIh7k4ipYBy5r2Zt0iwLjWtg-c0kbgIJU6_XQZ8ctsBPaDdu8TelnnKclfkQYe8deLX9XD_DiqMuq0NW43aBE_B2hBcJjwXrZWJ2ThXLPqiKXoGQAJii6QDuC0ocNETis8X5xI42Q:1qC6wb:uTp_vgSlb98emYU0lj-ijSXUrBzRLTHu84EU6eibRqA', '2023-07-05 23:08:57.302742'),
+('mi5syu7uqs6z6j3xd6xh1dypt7e7gnp6', '.eJxVjEsOAiEQBe_C2hBapkdw6d4zkIZuZNRAMp-V8e5KMgvdVtV7LxVoW0vYFpnDxOqsANThF0ZKD6nd8J3qrenU6jpPUfdE73bR18byvOzt30GhpXzXjk7JZsvikTMCeBzQpyOwYR4HY8fsWCKgCDmbR9MhDx4BSZLJoN4fDOo4NQ:1qGo75:S0Eigx9x8l2JHTgYc5v4rj5ouWwZKUkkMRzodxYcPuo', '2023-07-18 22:03:11.357617'),
 ('o7wh1ac06ajnlp0r2vsjjlm74thj336e', '.eJxVjEsOAiEQBe_C2hBapkdw6d4zkIZuZNRAMp-V8e5KMgvdVtV7LxVoW0vYFpnDxOqsANThF0ZKD6nd8J3qrenU6jpPUfdE73bR18byvOzt30GhpXzXjk7JZsvikTMCeBzQpyOwYR4HY8fsWCKgCDmbR9MhDx4BSZLJoN4fDOo4NQ:1qCqIV:Gb9tvB-uIPiw85Oo09IsTN3MAJVULiSux2V2YNRRbxM', '2023-07-07 23:34:35.113703'),
-('wq1pz72cp6hgthd270zpbzzzwgd6dilv', '.eJxVjDsOwjAQRO_iGlky_lPScwZrvbvGAWRLcVIh7k4ipYBy5r2Zt0iwLjWtg-c0kbgIJU6_XQZ8ctsBPaDdu8TelnnKclfkQYe8deLX9XD_DiqMuq0NW43aBE_B2hBcJjwXrZWJ2ThXLPqiKXoGQAJii6QDuC0ocNETis8X5xI42Q:1qCZVG:9prvEct1voSAWuRdNgw8sqyy02vJbAKwobQQ9NB1tiE', '2023-07-07 05:38:38.968123');
+('olrzakm46fpsoupv8hmkyns55tvtkxmo', '.eJxVjEsOAiEQBe_C2hBapkdw6d4zkIZuZNRAMp-V8e5KMgvdVtV7LxVoW0vYFpnDxOqsANThF0ZKD6nd8J3qrenU6jpPUfdE73bR18byvOzt30GhpXzXjk7JZsvikTMCeBzQpyOwYR4HY8fsWCKgCDmbR9MhDx4BSZLJoN4fDOo4NQ:1qGuLT:7LI2aR-9ENzsNBeY0LWybfgR0lmaATBvd3eQ6SHlVQs', '2023-07-19 04:42:27.190743'),
+('yaxvc5s1qbvcia254xqvve2q5psun3oj', '.eJxVjEsOAiEQBe_C2hBapkdw6d4zkIZuZNRAMp-V8e5KMgvdVtV7LxVoW0vYFpnDxOqsANThF0ZKD6nd8J3qrenU6jpPUfdE73bR18byvOzt30GhpXzXjk7JZsvikTMCeBzQpyOwYR4HY8fsWCKgCDmbR9MhDx4BSZLJoN4fDOo4NQ:1qGRl0:FiaMxTDOSqufLp4QvR1KsXFkHhd0kKffEQQqjenlrww', '2023-07-17 22:10:54.278926');
 
 --
 -- Índices para tablas volcadas
@@ -695,6 +792,15 @@ ALTER TABLE `core_comentario`
   ADD KEY `core_comentario_user_id_e6908839_fk_core_cliente_id` (`user_id`);
 
 --
+-- Indices de la tabla `core_compra`
+--
+ALTER TABLE `core_compra`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `core_compra_carrito_id_852b20e6_fk_core_carrito_id` (`carrito_id`),
+  ADD KEY `core_compra_cliente_id_dab1b96e_fk_core_cliente_id` (`cliente_id`),
+  ADD KEY `core_compra_nombreEstado_id_a8cc64f6_fk_core_estado_id` (`nombreEstado_id`);
+
+--
 -- Indices de la tabla `core_estado`
 --
 ALTER TABLE `core_estado`
@@ -706,13 +812,6 @@ ALTER TABLE `core_estado`
 ALTER TABLE `core_producto`
   ADD PRIMARY KEY (`id`),
   ADD KEY `core_producto_tipo_id_e0e92ad1_fk_core_tipoproducto_id` (`tipo_id`);
-
---
--- Indices de la tabla `core_seguimiento`
---
-ALTER TABLE `core_seguimiento`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `core_seguimiento_estado_id_2399bc69_fk_core_estado_id` (`estado_id`);
 
 --
 -- Indices de la tabla `core_suscripcion`
@@ -763,13 +862,13 @@ ALTER TABLE `django_session`
 -- AUTO_INCREMENT de la tabla `authentication_user`
 --
 ALTER TABLE `authentication_user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT de la tabla `authentication_user_groups`
 --
 ALTER TABLE `authentication_user_groups`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT de la tabla `authentication_user_user_permissions`
@@ -793,19 +892,19 @@ ALTER TABLE `auth_group_permissions`
 -- AUTO_INCREMENT de la tabla `auth_permission`
 --
 ALTER TABLE `auth_permission`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
 
 --
 -- AUTO_INCREMENT de la tabla `core_carrito`
 --
 ALTER TABLE `core_carrito`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=87;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT de la tabla `core_cliente`
 --
 ALTER TABLE `core_cliente`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT de la tabla `core_comentario`
@@ -814,28 +913,28 @@ ALTER TABLE `core_comentario`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT de la tabla `core_compra`
+--
+ALTER TABLE `core_compra`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
 -- AUTO_INCREMENT de la tabla `core_estado`
 --
 ALTER TABLE `core_estado`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT de la tabla `core_producto`
 --
 ALTER TABLE `core_producto`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
-
---
--- AUTO_INCREMENT de la tabla `core_seguimiento`
---
-ALTER TABLE `core_seguimiento`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT de la tabla `core_suscripcion`
 --
 ALTER TABLE `core_suscripcion`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `core_tipoproducto`
@@ -847,19 +946,19 @@ ALTER TABLE `core_tipoproducto`
 -- AUTO_INCREMENT de la tabla `django_admin_log`
 --
 ALTER TABLE `django_admin_log`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=148;
 
 --
 -- AUTO_INCREMENT de la tabla `django_content_type`
 --
 ALTER TABLE `django_content_type`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT de la tabla `django_migrations`
 --
 ALTER TABLE `django_migrations`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 
 --
 -- Restricciones para tablas volcadas
@@ -912,16 +1011,18 @@ ALTER TABLE `core_comentario`
   ADD CONSTRAINT `core_comentario_user_id_e6908839_fk_core_cliente_id` FOREIGN KEY (`user_id`) REFERENCES `core_cliente` (`id`);
 
 --
+-- Filtros para la tabla `core_compra`
+--
+ALTER TABLE `core_compra`
+  ADD CONSTRAINT `core_compra_carrito_id_852b20e6_fk_core_carrito_id` FOREIGN KEY (`carrito_id`) REFERENCES `core_carrito` (`id`),
+  ADD CONSTRAINT `core_compra_cliente_id_dab1b96e_fk_core_cliente_id` FOREIGN KEY (`cliente_id`) REFERENCES `core_cliente` (`id`),
+  ADD CONSTRAINT `core_compra_nombreEstado_id_a8cc64f6_fk_core_estado_id` FOREIGN KEY (`nombreEstado_id`) REFERENCES `core_estado` (`id`);
+
+--
 -- Filtros para la tabla `core_producto`
 --
 ALTER TABLE `core_producto`
   ADD CONSTRAINT `core_producto_tipo_id_e0e92ad1_fk_core_tipoproducto_id` FOREIGN KEY (`tipo_id`) REFERENCES `core_tipoproducto` (`id`);
-
---
--- Filtros para la tabla `core_seguimiento`
---
-ALTER TABLE `core_seguimiento`
-  ADD CONSTRAINT `core_seguimiento_estado_id_2399bc69_fk_core_estado_id` FOREIGN KEY (`estado_id`) REFERENCES `core_estado` (`id`);
 
 --
 -- Filtros para la tabla `core_suscripcion`
