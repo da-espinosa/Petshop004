@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'django.contrib.humanize',
     'rest_framework',
     'paypalcheckoutsdk',
+    'authentication',
 ]
 
 STATIC_URL = 'static/'
@@ -157,3 +158,11 @@ MESSAGE_STORAGE = "django.contrib.messages.storage.cookie.CookieStorage"
 #CONFIGURANDO LAS RUTAS DEL LOGIN
 LOGIN_REDIRECT_URL='/'
 LOGOUT_REDIRECT_URL='/'
+
+
+# Change user model
+AUTH_USER_MODEL = 'authentication.User'
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+]
+
